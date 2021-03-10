@@ -2,7 +2,7 @@
 using System;
 
 namespace Echo_Reporting_Backend.Formulas {
-    public class LVEFFormula : IFormula {
+    public class AnomalyFormula : IFormula {
         private Constants constants;
         public string ReportAnomaly(double measurement) {
             int bracket;
@@ -27,13 +27,13 @@ namespace Echo_Reporting_Backend.Formulas {
             throw new NotImplementedException();
         }
         public bool ZScoreable() => false;
-        public static LVEFFormula LVBiplaneEF() {
-            return new LVEFFormula(new Constants("left ventricular biplane EF", new[] { "Reduced", "Borderline", "Normal" }));
+        public static AnomalyFormula LVBiplaneEF() {
+            return new AnomalyFormula(new Constants("left ventricular biplane EF", new[] { "Reduced", "Borderline", "Normal" }));
         }
-        public static LVEFFormula LV4ChamberEF() {
-            return new LVEFFormula(new Constants("left ventricular 4 chamber EF", new[] { "Reduced", "Borderline", "Normal" }));
+        public static AnomalyFormula LV4ChamberEF() {
+            return new AnomalyFormula(new Constants("left ventricular 4 chamber EF", new[] { "Reduced", "Borderline", "Normal" }));
         }
-        private LVEFFormula(Constants constants) {
+        private AnomalyFormula(Constants constants) {
             this.constants = constants;
         }
         private struct Constants {

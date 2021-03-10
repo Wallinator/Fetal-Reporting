@@ -73,13 +73,12 @@
     <Compile Include="Data\PatientData.cs" />
     <Compile Include="Data\Results\Result.cs" />
     <Compile Include="Data\StructuredReport.cs" />
-    <Compile Include="Formulas\CoronaryArteryInvolvementFormula.cs" />
-    <Compile Include="Formulas\DilationOfAscendingAortaFormula.cs" />
-    <Compile Include="Formulas\EchoManualFormula.cs" />
+    <Compile Include="Formulas\MaoFormula.cs" />
+    <Compile Include="Formulas\RochaFormula.cs" />
+    <Compile Include="Formulas\PasquiniFormula.cs" />
+    <Compile Include="Formulas\SchneiderFormula.cs" />
     <Compile Include="Formulas\IFormula.cs" />
-    <Compile Include="Formulas\ImpactOfCardiacGrowthFormula.cs" />
-    <Compile Include="Formulas\RegressionEquationFormula.cs" />
-    <Compile Include="Formulas\LVEFFormula.cs" />
+    <Compile Include="Formulas\AnomalyFormula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

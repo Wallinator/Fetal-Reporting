@@ -115,7 +115,7 @@ namespace FetalReporting.Data.Measurements {
             specs.Add(new MeasurementSpecification("Septal annulus S'", "Peak Tissue Velocity", new Dictionary<string, string>(props), "cm/s", formula: ImpactOfCardiacGrowthFormula.SeptalAnnulusS(pd, "Septal annulus S' velocity"), unitEnum: SpeedUnit.CentimeterPerSecond));
             props.Clear();
 
-            specs.Add(new MeasurementSpecification("LV IVRT", "Isovolumic Relaxation Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.LVIVRT(pd, "LV IVRT"), unitEnum: DurationUnit.Millisecond));
+            specs.Add(new MeasurementSpecification("LV IVRT", "Isovolumic Relaxation Time", new Dictionary<string, string>(props), "ms", formula: SchneiderFormula.LVIVRT(pd, "LV IVRT"), unitEnum: DurationUnit.Millisecond));
             props.Clear();
 
             props.Add("Finding Site", "Left Ventricle Outflow Tract");
@@ -126,7 +126,7 @@ namespace FetalReporting.Data.Measurements {
             props.Clear();
 
             props.Add("Measurement Method", "Method of Disks, Biplane");
-            specs.Add(new MeasurementSpecification("Left Ventricular biplane EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
+            specs.Add(new MeasurementSpecification("Left Ventricular biplane EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: AnomalyFormula.LVBiplaneEF()));
             props.Clear();
 
             props.Add("Measurement Method", "Teichholz");
@@ -139,7 +139,7 @@ namespace FetalReporting.Data.Measurements {
 
             props.Add("Measurement Method", "Method of Disks, Single Plane");
             props.Add("Image View", "Apical four chamber");
-            specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: LVEFFormula.LVBiplaneEF()));
+            specs.Add(new MeasurementSpecification("Left ventricular Apical 4 chamber EF", "Cardiac ejection fraction", new Dictionary<string, string>(props), "%", includeImageMode: true, formula: AnomalyFormula.LVBiplaneEF()));
             props.Clear();
 
             specs.Add(new MeasurementSpecification("MVCFc", "HR-Corrected Mean Velocity of Circumferential Fiber Shortening", new Dictionary<string, string>(props), "circ/sec", includeImageMode: true));
@@ -266,7 +266,7 @@ namespace FetalReporting.Data.Measurements {
 
 
             props.Add("Flow Direction", "Antegrade Flow");
-            specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: EchoManualFormula.MVDecelTime(pd, "mitral valve deceleration time"), unitEnum: DurationUnit.Millisecond));
+            specs.Add(new MeasurementSpecification("MV decel time", "Deceleration Time", new Dictionary<string, string>(props), "ms", formula: SchneiderFormula.MVDecelTime(pd, "mitral valve deceleration time"), unitEnum: DurationUnit.Millisecond));
             props.Clear();
 
 
