@@ -1,33 +1,33 @@
-﻿using FetalReporting.Data.Measurements;
+﻿using Echo_Reporting_Backend.Data;
+using FetalReporting.Data.Measurements;
 using FetalReporting.Data.Results;
-using Echo_Reporting_Backend.Data;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
 namespace FetalReporting.Data {
-	public class StructuredReport {
-		public Dictionary<string, Result> Results = new Dictionary<string, Result>();
-		public PatientData PatientData {
-			get;
-			set;
-		}
-		public ReportingOptions ReportingOptions {
-			get;
-			set;
-		}
+    public class StructuredReport {
+        public Dictionary<string, Result> Results = new Dictionary<string, Result>();
+        public PatientData PatientData {
+            get;
+            set;
+        }
+        public ReportingOptions ReportingOptions {
+            get;
+            set;
+        }
 
-		public ReportSections Sections {
-			get;
-			set;
-		}
-		public void WriteGeneratedReport(Stream stream, string html) {
-			var writer = new StreamWriter(stream);
-			writer.WriteLine(html);
-			writer.Close();
-		}
-		/*public void WriteGeneratedReport(Stream stream) {
+        public ReportSections Sections {
+            get;
+            set;
+        }
+        public void WriteGeneratedReport(Stream stream, string html) {
+            var writer = new StreamWriter(stream);
+            writer.WriteLine(html);
+            writer.Close();
+        }
+        /*public void WriteGeneratedReport(Stream stream) {
 				var writer = new StreamWriter(stream);
 				var pd = PatientData;
 			List<string> l1, l2, l3;
@@ -118,63 +118,63 @@ namespace FetalReporting.Data {
 			writer.Close();
 		}
 */
-		public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings, ReportingOptions options) {
-			ReportingOptions = options;
-			PatientData = patientData;
-			ResultsFromFindings(findings);
-		}
-		public StructuredReport() : this(new PatientData(), new Dictionary<string, List<MeasurementGroup>>(), new ReportingOptions()) {
-		}
-		public StructuredReport(PatientData patientData) : this(patientData, new Dictionary<string, List<MeasurementGroup>>(), new ReportingOptions()) {
-		}
-		public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings) : this(patientData, findings, new ReportingOptions()) {
-		}
-		public void GenerateSections() {
-			Sections = new ReportSections(this);
-		}
+        public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings, ReportingOptions options) {
+            ReportingOptions = options;
+            PatientData = patientData;
+            ResultsFromFindings(findings);
+        }
+        public StructuredReport() : this(new PatientData(), new Dictionary<string, List<MeasurementGroup>>(), new ReportingOptions()) {
+        }
+        public StructuredReport(PatientData patientData) : this(patientData, new Dictionary<string, List<MeasurementGroup>>(), new ReportingOptions()) {
+        }
+        public StructuredReport(PatientData patientData, Dictionary<string, List<MeasurementGroup>> findings) : this(patientData, findings, new ReportingOptions()) {
+        }
+        public void GenerateSections() {
+            Sections = new ReportSections(this);
+        }
 
-		private void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
-			Dictionary<string, List<MeasurementSpecification>> specsbysite = SpecificationHelper.SpecsBySite(PatientData);
-			foreach (var sitename in specsbysite.Keys) {
-				if (findings.ContainsKey(sitename)) {
-					ResultsFromGroups(findings[sitename], specsbysite[sitename]);
-				}
-				else {
-					ResultsFromGroups(new List<MeasurementGroup>(), specsbysite[sitename]);
-				}
-			}
-			AddCalculatedValues();
-		}
+        private void ResultsFromFindings(Dictionary<string, List<MeasurementGroup>> findings) {
+            Dictionary<string, List<MeasurementSpecification>> specsbysite = SpecificationHelper.SpecsBySite(PatientData);
+            foreach (var sitename in specsbysite.Keys) {
+                if (findings.ContainsKey(sitename)) {
+                    ResultsFromGroups(findings[sitename], specsbysite[sitename]);
+                }
+                else {
+                    ResultsFromGroups(new List<MeasurementGroup>(), specsbysite[sitename]);
+                }
+            }
+            AddCalculatedValues();
+        }
 
-		private void ResultsFromGroups(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
-			foreach (var spec in specs) {
-				Result r = spec.FindAndRemoveFromGroups(groups);
-				Results.Add(r.Name, r);
-				Debug.WriteLine(r.DebugString());
-			}
-		}
+        private void ResultsFromGroups(List<MeasurementGroup> groups, List<MeasurementSpecification> specs) {
+            foreach (var spec in specs) {
+                Result r = spec.FindAndRemoveFromGroups(groups);
+                Results.Add(r.Name, r);
+                Debug.WriteLine(r.DebugString());
+            }
+        }
 
-		private void AddCalculatedValues() {
-			var r1 = Results["Pulmonary valve end diastolic velocity"];
-			Result final1;
-			if (!r1.Empty) {
-				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r1.Value, 2));
-			}
-			else {
-				final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
-			}
-			Results["Pulmonary valve end diastolic peak gradient"] = final1;
+        private void AddCalculatedValues() {
+            var r1 = Results["Pulmonary valve end diastolic velocity"];
+            Result final1;
+            if (!r1.Empty) {
+                final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r1.Value, 2));
+            }
+            else {
+                final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
+            }
+            Results["Pulmonary valve end diastolic peak gradient"] = final1;
 
 
-			var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
-			Result final2;
-			if (!r2.Empty) {
-				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r2.Value, 2));
-			}
-			else {
-				final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
-			}
-			Results["Patent Ductus Arteriosus peak gradient"] = final2;
-		}
-	}
+            var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
+            Result final2;
+            if (!r2.Empty) {
+                final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r2.Value, 2));
+            }
+            else {
+                final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
+            }
+            Results["Patent Ductus Arteriosus peak gradient"] = final2;
+        }
+    }
 }

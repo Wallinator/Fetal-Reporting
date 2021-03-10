@@ -3,9 +3,9 @@ using System;
 using System.Windows.Forms;
 
 namespace Fetal_Reporting_Windows_App {
-    public partial class StringFieldControl : UserControl {
+    public partial class DateFieldControl : UserControl {
         private readonly StringResult Result;
-        public StringFieldControl(StringResult result) {
+        public DateFieldControl(StringResult result) {
             InitializeComponent();
             Result = result;
             ResultTitleLabel.Text = result.Name;

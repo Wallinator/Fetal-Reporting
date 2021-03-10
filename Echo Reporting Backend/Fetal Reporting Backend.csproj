@@ -57,6 +57,7 @@
     <Compile Include="Data\ReportGenerator.cs" />
     <Compile Include="Data\ReportingOptions.cs" />
     <Compile Include="Data\ReportSections.cs" />
+    <Compile Include="Data\Results\DateResult.cs" />
     <Compile Include="Data\Results\MultipleChoiceResult.cs" />
     <Compile Include="Data\Results\BoolResult.cs" />
     <Compile Include="Data\Results\StringResult.cs" />

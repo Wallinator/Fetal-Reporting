@@ -170,6 +170,12 @@
     <Compile Include="Controls\ComboListBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\DateFieldControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DateFieldControl.Designer.cs">
+      <DependentUpon>DateFieldControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     <Compile Include="ReportForm.Designer.cs">
       <DependentUpon>ReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Controls\DateFieldControl.resx">
+      <DependentUpon>DateFieldControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

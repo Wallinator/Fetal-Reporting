@@ -1,9 +1,7 @@
-using System;
-
 namespace FetalReporting {
-	internal static class Program {
-		private static void Main() {
-			//DicomFileReading.DicomReader.test();
-		}
-	}
+    internal static class Program {
+        private static void Main() {
+            //DicomFileReading.DicomReader.test();
+        }
+    }
 }
