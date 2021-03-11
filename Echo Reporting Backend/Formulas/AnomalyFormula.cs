@@ -2,9 +2,9 @@
 using System;
 
 namespace Echo_Reporting_Backend.Formulas {
-    public class AnomalyFormula : IFormula {
+    public class AnomalyFormula : Formula {
         private Constants constants;
-        public string ReportAnomaly(double measurement) {
+        public override string ReportAnomaly(double measurement) {
             int bracket;
             if (measurement < 0.5) {
                 bracket = 0;
@@ -23,16 +23,17 @@ namespace Echo_Reporting_Backend.Formulas {
                 return constants.Anomalies[bracket];
             }
         }
-        public double GetZScore(double observed_y) {
+        public override double GetZScore(double observed_y) {
             throw new NotImplementedException();
         }
-        public bool ZScoreable() => false;
+        public override bool ZScoreable() => false;
         public static AnomalyFormula LVBiplaneEF() {
             return new AnomalyFormula(new Constants("left ventricular biplane EF", new[] { "Reduced", "Borderline", "Normal" }));
         }
         public static AnomalyFormula LV4ChamberEF() {
             return new AnomalyFormula(new Constants("left ventricular 4 chamber EF", new[] { "Reduced", "Borderline", "Normal" }));
         }
+
         private AnomalyFormula(Constants constants) {
             this.constants = constants;
         }

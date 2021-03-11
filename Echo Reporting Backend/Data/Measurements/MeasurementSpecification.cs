@@ -12,12 +12,12 @@ namespace FetalReporting.Data.Measurements {
         public string DefaultUnitShorthand;
         public bool IncludeImageMode;
         public Enum UnitEnum;
-        public IFormula Formula;
+        public Formula Formula;
         public string AltName;
         //public bool NonMean;
 
         //public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null/*, bool nonMean = false*/) {
-        public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, IFormula formula = null, bool includeImageMode = false, Enum unitEnum = null, string altName = "") {
+        public MeasurementSpecification(string name, string rawMeasurementName, Dictionary<string, string> properties, string defaultUnitShorthand, Formula formula = null, bool includeImageMode = false, Enum unitEnum = null, string altName = "") {
             Name = name;
             RawMeasurementName = rawMeasurementName;
             Properties = properties;

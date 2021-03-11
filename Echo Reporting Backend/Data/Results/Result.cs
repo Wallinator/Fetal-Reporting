@@ -8,12 +8,12 @@ namespace FetalReporting.Data.Results {
         public string Name;
         public string UnitShorthand;
         public double Value;
-        public IFormula Formula;
+        public Formula Formula;
         public bool HasComment;
         public bool Empty;
         public string AltName;
 
-        public Result(string name, string unitShorthand, IFormula formula = null, bool empty = true, double value = 0, string altName = "") {
+        public Result(string name, string unitShorthand, Formula formula = null, bool empty = true, double value = 0, string altName = "") {
             Name = name;
             UnitShorthand = unitShorthand;
             Value = value;

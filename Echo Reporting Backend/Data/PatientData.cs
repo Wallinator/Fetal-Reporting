@@ -18,6 +18,7 @@ namespace FetalReporting.Data {
         public MultipleChoiceResult EchoType;
         public MultipleChoiceResult ReportingDoctor;
         public Result PatientAge;
+        public Result FemurLength;
         public Result GestationalAge;
 
 
@@ -33,6 +34,9 @@ namespace FetalReporting.Data {
 
             temp = new UnitHeaderAdapter("Gestational Age", new Duration(0, DurationUnit.Day));
             GestationalAge = new Result(temp, true);
+
+            temp = new UnitHeaderAdapter("Femur Length", new Length(0, LengthUnit.Millimeter));
+            FemurLength = new Result(temp, true);
 
             PatientName = new StringResult("Patient Name");
 

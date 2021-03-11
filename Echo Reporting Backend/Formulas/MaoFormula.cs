@@ -2,9 +2,9 @@
 using System;
 
 namespace FetalReporting.Formulas {
-    public class MaoFormula : IFormula {
+    public class MaoFormula : Formula {
         private Constants constants;
-        public string ReportAnomaly(double measurement) {
+        public override string ReportAnomaly(double measurement) {
             double ZScore = GetZScore(measurement);
             int bracket;
             if (ZScore < -2) {
@@ -24,10 +24,10 @@ namespace FetalReporting.Formulas {
                 return constants.Anomalies[bracket];
             }
         }
-        public double GetZScore(double measurement) {
+        public override double GetZScore(double measurement) {
             return (measurement - (constants.Multiplier1 * constants.Pd.GestationalAge.Value + constants.Intercept1))/(constants.Multiplier2 * constants.Pd.GestationalAge.Value + constants.Intercept2);
         }
-        public bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+        public override bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
         public static MaoFormula AorticValveVelocity(PatientData pd, string name) {
             return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, name, new string[] { } ));
         }

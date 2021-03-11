@@ -77,7 +77,7 @@
     <Compile Include="Formulas\RochaFormula.cs" />
     <Compile Include="Formulas\PasquiniFormula.cs" />
     <Compile Include="Formulas\SchneiderFormula.cs" />
-    <Compile Include="Formulas\IFormula.cs" />
+    <Compile Include="Formulas\Formula.cs" />
     <Compile Include="Formulas\AnomalyFormula.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
