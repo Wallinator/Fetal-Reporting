@@ -1,4 +1,4 @@
-﻿using FetalReporting.Data.Measurements;
+﻿
 using FetalReporting.Formulas;
 using System;
 using System.Collections.Generic;
@@ -21,14 +21,6 @@ namespace FetalReporting.Data.Results {
             HasComment = formula != null;
             Empty = empty;
             AltName = altName;
-        }
-        public Result(IMeasurementHeader header, bool empty = false) {
-            Name = header.Name;
-            UnitShorthand = header.UnitShorthand;
-            Value = header.Value;
-            Formula = null;
-            Empty = empty;
-            AltName = "";
         }
 
         public bool ZScoreable => Formula != null && Formula.ZScoreable();

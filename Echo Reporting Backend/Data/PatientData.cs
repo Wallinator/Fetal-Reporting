@@ -1,5 +1,4 @@
-﻿using FetalReporting.Data.Measurements;
-using FetalReporting.Data.Measurements.Units;
+﻿
 using FetalReporting.Data.Results;
 using System;
 using System.Collections.Generic;
@@ -23,20 +22,15 @@ namespace FetalReporting.Data {
 
 
         public void UpdateGestationalAgeResult() {
-            GestationalAge.Value = 280 - (EstimatedDueDate.Value - StudyDate.Value).Days;
+            GestationalAge.Value = (280 - (EstimatedDueDate.Value - StudyDate.Value).Days)/7;
         }
         public PatientData() {
 
-            IMeasurementHeader temp;
+            PatientAge = new Result("Age", "years");
 
-            temp = new UnitHeaderAdapter("Age", new Duration(0, DurationUnit.Year365));
-            PatientAge = new Result(temp, true);
+            GestationalAge = new Result("Gestational Age", "weeks");
 
-            temp = new UnitHeaderAdapter("Gestational Age", new Duration(0, DurationUnit.Day));
-            GestationalAge = new Result(temp, true);
-
-            temp = new UnitHeaderAdapter("Femur Length", new Length(0, LengthUnit.Millimeter));
-            FemurLength = new Result(temp, true);
+            FemurLength = new Result("Femur Length", "mm");
 
             PatientName = new StringResult("Patient Name");
 
@@ -45,6 +39,7 @@ namespace FetalReporting.Data {
             PatientDOB = new StringResult("DOB");
 
             StudyDate = new DateResult("Study Date");
+
             EstimatedDueDate = new DateResult("Estimated Due Date");
 
             ReasonForStudy = new StringResult("Reason For Study");

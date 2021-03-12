@@ -32,7 +32,7 @@ namespace FetalReporting.Formulas {
             return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, name, new string[] { } ));
         }
         public static MaoFormula PulmonaryValveVelocity(PatientData pd, string name) {
-            return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, name, new string[] { }));
+            return new MaoFormula(new Constants(34.1, 1.393, 5.634, 0.121, pd, name, new string[] { }));
         }
         private MaoFormula(Constants constants) {
             this.constants = constants;

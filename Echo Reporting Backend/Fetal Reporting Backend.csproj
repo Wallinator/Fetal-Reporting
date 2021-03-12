@@ -53,23 +53,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Measurements\SpecificationHelper.cs" />
     <Compile Include="Data\ReportGenerator.cs" />
     <Compile Include="Data\ReportingOptions.cs" />
     <Compile Include="Data\ReportSections.cs" />
     <Compile Include="Data\Results\DateResult.cs" />
     <Compile Include="Data\Results\MultipleChoiceResult.cs" />
     <Compile Include="Data\Results\BoolResult.cs" />
+    <Compile Include="Data\Results\ResultsHelper.cs" />
     <Compile Include="Data\Results\StringResult.cs" />
-    <Compile Include="Data\Measurements\IMeasurementHeader.cs" />
-    <Compile Include="Data\Measurements\Measurement.cs" />
-    <Compile Include="Data\Measurements\MeasurementGroup.cs" />
-    <Compile Include="Data\Measurements\MeasurementHeader.cs" />
-    <Compile Include="Data\Measurements\MeasurementHelpers.cs" />
-    <Compile Include="Data\Measurements\MeasurementSpecification.cs" />
-    <Compile Include="Data\Measurements\Units\HeaderFactory.cs" />
-    <Compile Include="Data\Measurements\Units\SupportedUnitsHelpers.cs" />
-    <Compile Include="Data\Measurements\Units\UnitHeaderAdapter.cs" />
     <Compile Include="Data\PatientData.cs" />
     <Compile Include="Data\Results\Result.cs" />
     <Compile Include="Data\StructuredReport.cs" />
