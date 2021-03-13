@@ -31,7 +31,7 @@ namespace Echo_Reporting_Backend.Data {
                 age = Math.Floor(pd.PatientAge.Value * 12).ToString() + " mo";
             }
             string bp = "";
-            if (!pd.SystolicBloodPressure.Empty && !pd.DiastolicBloodPressure.Empty) {
+            /*if (!pd.SystolicBloodPressure.Empty && !pd.DiastolicBloodPressure.Empty) {
                 bp = pd.SystolicBloodPressure.Value.ToString("N0") + "/" + pd.DiastolicBloodPressure.Value.ToString("N0") + " mmHg";
             }
 
@@ -46,7 +46,7 @@ namespace Echo_Reporting_Backend.Data {
             html += AddPatientDataRow(l1, l2);
             l1 = pd.PatientDOB.TableString();
             l2 = pd.BSA.TableString();
-            html += AddPatientDataRow(l1, l2);
+            html += AddPatientDataRow(l1, l2);*/
             l1 = new List<string>() { pd.PatientAge.Name, age };
             l2 = new List<string>() { "Blood Pressure", bp };
             html += AddPatientDataRow(l1, l2);

@@ -1,19 +1,16 @@
 ﻿using FetalReporting.Formulas;
 using System;
 
-namespace Echo_Reporting_Backend.Formulas {
+namespace FetalReporting.Formulas {
     public class AnomalyFormula : Formula {
         private Constants constants;
         public override string ReportAnomaly(double measurement) {
             int bracket;
-            if (measurement < 0.5) {
+            if (measurement <= constants.Limit) {
                 bracket = 0;
             }
-            else if (measurement < 0.55) {
-                bracket = 1;
-            }
             else {
-                bracket = 2;
+                bracket = 1;
             }
 
             if (constants.AnomalyPrefix && constants.Anomalies[bracket].Length != 0) {
@@ -27,11 +24,20 @@ namespace Echo_Reporting_Backend.Formulas {
             throw new NotImplementedException();
         }
         public override bool ZScoreable() => false;
-        public static AnomalyFormula LVBiplaneEF() {
-            return new AnomalyFormula(new Constants("left ventricular biplane EF", new[] { "Reduced", "Borderline", "Normal" }));
+        public static AnomalyFormula HeartRate() {
+            return new AnomalyFormula(new Constants("Heart Rate", 99.999, new[] { "Fetal bradycardia", "Normal fetal heart rate" }, false));
         }
-        public static AnomalyFormula LV4ChamberEF() {
-            return new AnomalyFormula(new Constants("left ventricular 4 chamber EF", new[] { "Reduced", "Borderline", "Normal" }));
+        public static AnomalyFormula MyocardialPerformanceIndex() {
+            return new AnomalyFormula(new Constants("Myocardial performance index", 0.5, new[] { "Normal", "Increased" }));
+        }
+        public static AnomalyFormula CardiothoracicCircumferenceRatio() {
+            return new AnomalyFormula(new Constants("Cardiothoracic circumference ratio", 0.6, new[] { "Normal Cardiothoracic circumference ratio", "Cardiomegaly" }, false));
+        }
+        public static AnomalyFormula CardiothoracicAreaRatio() {
+            return new AnomalyFormula(new Constants("Cardiothoracic area ratio", 0.35, new[] { "Normal Cardiothoracic area ratio", "Cardiomegaly" }, false));
+        }
+        public static AnomalyFormula DuctusArteriosusPeakVelocity() {
+            return new AnomalyFormula(new Constants("Ductus arteriosus velocity", 150.0, new[] { "Normal", "Increased" }));
         }
 
         private AnomalyFormula(Constants constants) {
@@ -41,15 +47,19 @@ namespace Echo_Reporting_Backend.Formulas {
             public string MeasurementName {
                 get; set;
             }
+            public double Limit {
+                get; set;
+            }
             public string[] Anomalies {
                 get; private set;
             }
             public bool AnomalyPrefix {
                 get; private set;
             }
-            public Constants(string name, string[] anomalies, bool prefix = true) {
+            public Constants(string name, double limit, string[] anomalies, bool prefix = true) {
                 AnomalyPrefix = prefix;
                 MeasurementName = name;
+                Limit = limit;
                 Anomalies = anomalies;
             }
         }
