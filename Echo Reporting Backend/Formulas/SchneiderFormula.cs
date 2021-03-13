@@ -36,7 +36,7 @@ namespace FetalReporting.Formulas {
                 return (Math.Log(measurement / 10) - predCardDim) / constants.GAMSE;
             }
         }
-        public override bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+        public override bool ZScoreable() => true;
         public static SchneiderFormula AorticValve(PatientData pd, string name) {
             return new SchneiderFormula(new Constants(-2.274, 0.8972, 0.1103, -5.019, 1.263, 0.1282, pd, name, new[] { "a" }));
         }

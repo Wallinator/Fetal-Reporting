@@ -27,7 +27,7 @@ namespace FetalReporting.Formulas {
 
             return (measurement - (constants.Multiplier * constants.Pd.GestationalAge.Value + constants.Intercept))/constants.Divisor;
         }
-        public override bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+        public override bool ZScoreable() => true;
 
         public static RochaFormula RVWallThickness(PatientData pd, string name) {
             return new RochaFormula(new Constants(-1.001, 0.109, 0.4, pd, name, new string[] { }));

@@ -36,7 +36,7 @@ namespace FetalReporting.Formulas {
                 return (Math.Log(measurement) - predCardDim) / constants.GAMSE;
             }
         }
-        public override bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+        public override bool ZScoreable() => true;
         public static PasquiniFormula DuctusArteriosus3VV(PatientData pd, string name) {
             return new PasquiniFormula(new Constants(-3.009, 1.09, 0.179, -3.359, 1.396, 0.176, pd, name, new[] { "" }));
         }

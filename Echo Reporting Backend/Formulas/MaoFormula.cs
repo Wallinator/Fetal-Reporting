@@ -27,7 +27,7 @@ namespace FetalReporting.Formulas {
         public override double GetZScore(double measurement) {
             return (measurement - (constants.Multiplier1 * constants.Pd.GestationalAge.Value + constants.Intercept1))/(constants.Multiplier2 * constants.Pd.GestationalAge.Value + constants.Intercept2);
         }
-        public override bool ZScoreable() => constants.Pd.PatientAge.Value >= 3;
+        public override bool ZScoreable() => true;
         public static MaoFormula AorticValveVelocity(PatientData pd, string name) {
             return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, name, new string[] { } ));
         }
