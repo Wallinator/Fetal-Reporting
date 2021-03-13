@@ -7,14 +7,11 @@ namespace FetalReporting.Formulas {
         public override string ReportAnomaly(double measurement) {
             double ZScore = GetZScore(measurement);
             int bracket;
-            if (ZScore < -2) {
+            if (ZScore <= 2) {
                 bracket = 0;
             }
-            else if (ZScore <= 2) {
-                bracket = 1;
-            }
             else {
-                bracket = 2;
+                bracket = 1;
             }
 
             if (constants.AnomalyPrefix && constants.Anomalies[bracket].Length != 0) {
@@ -29,10 +26,10 @@ namespace FetalReporting.Formulas {
         }
         public override bool ZScoreable() => true;
         public static MaoFormula AorticValveVelocity(PatientData pd, string name) {
-            return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, name, new string[] { } ));
+            return new MaoFormula(new Constants(38.089, 1.463, 4.227, 0.239, pd, "aortic valve velocity", new string[] { "Normal", "Increased" } ));
         }
         public static MaoFormula PulmonaryValveVelocity(PatientData pd, string name) {
-            return new MaoFormula(new Constants(34.1, 1.393, 5.634, 0.121, pd, name, new string[] { }));
+            return new MaoFormula(new Constants(34.1, 1.393, 5.634, 0.121, pd, "pulmonary valve velocity", new string[] { "Normal", "Increased" }));
         }
         private MaoFormula(Constants constants) {
             this.constants = constants;

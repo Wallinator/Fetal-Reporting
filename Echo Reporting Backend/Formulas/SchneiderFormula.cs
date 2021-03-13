@@ -7,14 +7,20 @@ namespace FetalReporting.Formulas {
         public override string ReportAnomaly(double measurement) {
             double ZScore = GetZScore(measurement);
             int bracket;
-            if (ZScore < -2) {
+            if(ZScore < -2) {
                 bracket = 0;
             }
-            else if (ZScore <= 2) {
+            else if(ZScore <= 2) {
                 bracket = 1;
             }
-            else {
+            else if(ZScore <= 3) {
                 bracket = 2;
+            }
+            else if(ZScore <= 4) {
+                bracket = 3;
+            }
+            else {
+                bracket = 4;
             }
 
             if (constants.AnomalyPrefix && constants.Anomalies[bracket].Length != 0) {
@@ -38,46 +44,46 @@ namespace FetalReporting.Formulas {
         }
         public override bool ZScoreable() => true;
         public static SchneiderFormula AorticValve(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.274, 0.8972, 0.1103, -5.019, 1.263, 0.1282, pd, name, new[] { "a" }));
+            return new SchneiderFormula(new Constants(-2.274, 0.8972, 0.1103, -5.019, 1.263, 0.1282, pd, "aortic valve annulus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula PulmonaryValve(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.148, 0.9437, 0.111, -5.114, 1.352, 0.1208, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.148, 0.9437, 0.111, -5.114, 1.352, 0.1208, pd, "pulmonary valve annulus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula AscendingAorta(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.141, 0.8968, 0.1225, -4.886, 1.261, 0.133, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.141, 0.8968, 0.1225, -4.886, 1.261, 0.133, pd, "ascending aorta", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula MainPulmonaryArtery(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.072, 0.9465, 0.1645, -5.025, 1.347, 0.157, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.072, 0.9465, 0.1645, -5.025, 1.347, 0.157, pd, "main pulmonary artery", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula TricuspidValveAnnulus(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-1.735, 0.9937, 0.1386, -4.766, 1.395, 0.1394, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-1.735, 0.9937, 0.1386, -4.766, 1.395, 0.1394, pd, "tricuspid valve annulus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula MitralValveAnnulus(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-1.55, 0.8473, 0.1202, -4.084, 1.173, 0.1315, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-1.55, 0.8473, 0.1202, -4.084, 1.173, 0.1315, pd, "mitral valve annulus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula RVEDD(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-1.485, 0.9625, 0.1435, -4.455, 1.363, 0.1442, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-1.485, 0.9625, 0.1435, -4.455, 1.363, 0.1442, pd, "RV end-diastolic dimension", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula LVEDD(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-1.516, 0.9554, 0.1403, -4.292, 1.298, 0.156, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-1.516, 0.9554, 0.1403, -4.292, 1.298, 0.156, pd, "LV end-diastolic dimension", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula RVLength(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-0.8249, 0.9305, 0.152, -3.566, 1.277, 0.1658, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-0.8249, 0.9305, 0.152, -3.566, 1.277, 0.1658, pd, "RV length", new[] { "Hypoplastic", "Normal", "", "", "" }));
         }
         public static SchneiderFormula LVLength(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-0.6751, 0.8772, 0.1216, -3.231, 1.193, 0.1376, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-0.6751, 0.8772, 0.1216, -3.231, 1.193, 0.1376, pd, "LV length", new[] { "Hypoplastic", "Normal", "", "", "" }));
         }
         public static SchneiderFormula DescendingAorta(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.368, 0.9415, 0.1224, -5.365, 1.36, 0.1216, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.368, 0.9415, 0.1224, -5.365, 1.36, 0.1216, pd, "descending aorta", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula RightPulmonaryArtery(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.623, 0.8685, 0.178, -5.307, 1.23, 0.1802, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.623, 0.8685, 0.178, -5.307, 1.23, 0.1802, pd, "right pulmonary artery", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula LeftPulmonaryArtery(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.785, 0.9219, 0.1935, -5.39, 1.231, 0.1966, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.785, 0.9219, 0.1935, -5.39, 1.231, 0.1966, pd, "left pulmonary artery", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static SchneiderFormula DuctusArteriosusSagittal(PatientData pd, string name) {
-            return new SchneiderFormula(new Constants(-2.251, 0.737, 0.183, -4.44, 1.013, 0.1913, pd, name, new[] { "" }));
+            return new SchneiderFormula(new Constants(-2.251, 0.737, 0.183, -4.44, 1.013, 0.1913, pd, "ductus arteriosus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         private SchneiderFormula(Constants constants) {
             this.constants = constants;

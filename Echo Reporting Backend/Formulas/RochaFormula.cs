@@ -6,14 +6,17 @@ namespace FetalReporting.Formulas {
         public override string ReportAnomaly(double measurement) {
             double ZScore = GetZScore(measurement);
             int bracket;
-            if (ZScore < -2) {
+            if (ZScore <= 2) {
                 bracket = 0;
             }
-            else if (ZScore <= 2) {
+            else if(ZScore <= 3) {
                 bracket = 1;
             }
-            else {
+            else if(ZScore <= 4) {
                 bracket = 2;
+            }
+            else {
+                bracket = 3;
             }
 
             if (constants.AnomalyPrefix && constants.Anomalies[bracket].Length != 0) {
@@ -30,13 +33,13 @@ namespace FetalReporting.Formulas {
         public override bool ZScoreable() => true;
 
         public static RochaFormula RVWallThickness(PatientData pd, string name) {
-            return new RochaFormula(new Constants(-1.001, 0.109, 0.4, pd, name, new string[] { }));
+            return new RochaFormula(new Constants(-1.001, 0.109, 0.4, pd, "RV wall thickness", new string[] { "Normal RV wall thickness", "Mild RV free wall hypertrophy", "Moderate RV free wall hypertrophy", "Severe RV free wall hypertrophy" }, false));
         }
         public static RochaFormula LVWallThickness(PatientData pd, string name) {
-            return new RochaFormula(new Constants(-1.366, 0.12, 0.43, pd, name, new string[] { }));
+            return new RochaFormula(new Constants(-1.366, 0.12, 0.43, pd, "LV wall thickness", new string[] { "Normal LV wall thickness", "Mild LV free wall hypertrophy", "Moderate LV free wall hypertrophy", "Severe LV free wall hypertrophy" }, false));
         }
         public static RochaFormula SeptalWallThickness(PatientData pd, string name) {
-            return new RochaFormula(new Constants(-1.113, 0.107, 0.4, pd, name, new string[] { }));
+            return new RochaFormula(new Constants(-1.113, 0.107, 0.4, pd, "septal wall thickness", new string[] { "Normal septal wall thickness", "Mild septal hypertrophy", "Moderate septal hypertrophy", "Severe septal hypertrophy" }, false));
         }
         private RochaFormula(Constants constants) {
             this.constants = constants;

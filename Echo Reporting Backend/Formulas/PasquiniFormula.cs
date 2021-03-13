@@ -10,11 +10,17 @@ namespace FetalReporting.Formulas {
             if (ZScore < -2) {
                 bracket = 0;
             }
-            else if (ZScore <= 2) {
+            else if(ZScore <= 2) {
                 bracket = 1;
             }
-            else {
+            else if(ZScore <= 3) {
                 bracket = 2;
+            }
+            else if(ZScore <= 4) {
+                bracket = 3;
+            }
+            else {
+                bracket = 4;
             }
 
             if (constants.AnomalyPrefix && constants.Anomalies[bracket].Length != 0) {
@@ -38,13 +44,13 @@ namespace FetalReporting.Formulas {
         }
         public override bool ZScoreable() => true;
         public static PasquiniFormula DuctusArteriosus3VV(PatientData pd, string name) {
-            return new PasquiniFormula(new Constants(-3.009, 1.09, 0.179, -3.359, 1.396, 0.176, pd, name, new[] { "" }));
+            return new PasquiniFormula(new Constants(-3.009, 1.09, 0.179, -3.359, 1.396, 0.176, pd, "ductus arteriosus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static PasquiniFormula AorticIsthmus3VV(PatientData pd, string name) {
-            return new PasquiniFormula(new Constants(-2.56, 0.967, 0.163, -2.822, 1.224, 0.164, pd, name, new[] { "" }));
+            return new PasquiniFormula(new Constants(-2.56, 0.967, 0.163, -2.822, 1.224, 0.164, pd, "aortic isthmus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         public static PasquiniFormula AorticIsthmusSagittal(PatientData pd, string name) {
-            return new PasquiniFormula(new Constants(-2.261, 0.879, 0.181, -2.489, 1.109, 0.182, pd, name, new[] { "" }));
+            return new PasquiniFormula(new Constants(-2.261, 0.879, 0.181, -2.489, 1.109, 0.182, pd, "aortic isthmus", new[] { "Hypoplastic", "Normal", "Mildly dilated", "Moderately dilated", "Severely dilated" }));
         }
         private PasquiniFormula(Constants constants) {
             this.constants = constants;
