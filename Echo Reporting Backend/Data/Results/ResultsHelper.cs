@@ -11,8 +11,8 @@ namespace FetalReporting.Data.Results {
     public static class ResultsHelper {
         public static List<Result> GetEmptyResults(PatientData Pd) {
             var list = new List<Result>();
-            list.Add(new Result("Aortic valve", "mm", SchneiderFormula.AorticValve(Pd, "Aortic valve")));
-            list.Add(new Result("Pulmonary valve", "mm", SchneiderFormula.PulmonaryValve(Pd, "Pulmonary valve")));
+            list.Add(new Result("Aortic valve annulus", "mm", SchneiderFormula.AorticValve(Pd, "Aortic valve")));
+            list.Add(new Result("Pulmonary valve annulus", "mm", SchneiderFormula.PulmonaryValve(Pd, "Pulmonary valve")));
             list.Add(new Result("Ascending aorta", "mm", SchneiderFormula.AscendingAorta(Pd, "Ascending aorta")));
             list.Add(new Result("Main pulmonary artery", "mm", SchneiderFormula.MainPulmonaryArtery(Pd, "Main pulmonary artery")));
             list.Add(new Result("Tricuspid valve annulus", "mm", SchneiderFormula.TricuspidValveAnnulus(Pd, "Tricuspid valve annulus")));
@@ -43,7 +43,15 @@ namespace FetalReporting.Data.Results {
             list.Add(new Result("Cardiothoracic area ratio", "", AnomalyFormula.CardiothoracicAreaRatio()));
             list.Add(new Result("Ductus arteriosus peak velocity", "cm/s", AnomalyFormula.DuctusArteriosusPeakVelocity()));
 
+            list.Add(new Result("Tricuspid valve regurgitation peak velocity", "cm/s"));
+            list.Add(new Result("Ductus arteriosus peak velocity", "cm/s"));
+            list.Add(new Result("LV IVRT", "ms"));
+            list.Add(new Result("Mechanical PR interval", "ms"));
+            list.Add(new Result("Ventricular septal defect dimension", "mm"));
 
+            list.Add(new Result("Tricuspid valve regurgitation peak gradient", "mmHg"));
+            list.Add(new Result("Pulmonary valve peak gradient", "mmHg"));
+            list.Add(new Result("Aortic valve peak gradient", "mmHg"));
             return list;
         }
     }

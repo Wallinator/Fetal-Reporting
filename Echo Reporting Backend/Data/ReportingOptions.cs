@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace FetalReporting.Data {
     public class ReportingOptions {
         //Situs
-        public MultipleChoiceResult Situs = new MultipleChoiceResult("", new List<string>() { "Usual atrial arrangement (situs solitus)",
+        public MultipleChoiceResult Situs = new MultipleChoiceResult("", new List<string>() {   "Usual atrial arrangement (situs solitus)",
                                                                                                 "Mirror image arrangement (situs inversus)",
                                                                                                 "Left atrial isomerism",
                                                                                                 "Right atrial isomerism",
@@ -12,47 +12,35 @@ namespace FetalReporting.Data {
                                                                                                 "Not evaluated" });
 
         //Systemic Veins
-        public MultipleChoiceResult SystemicVeins = new MultipleChoiceResult("", new List<string>() { "Normal systemic venous connections",
-                                                                                                                    "Bilateral SVC's with LSVC to coronary sinus",
-                                                                                                                    "Isolated left SVC draining to the coronary sinus",
-                                                                                                                    "Interrupted IVC with azygous continuation",
-                                                                                                                    "Not evaluated" });
+        public MultipleChoiceResult SystemicVeins = new MultipleChoiceResult("", new List<string>() {   "Normal systemic venous connections",
+                                                                                                        "Bilateral SVC's with LSVC to coronary sinus",
+                                                                                                        "Isolated left SVC draining to the coronary sinus",
+                                                                                                        "Interrupted IVC with azygous continuation",
+                                                                                                        "Not evaluated" });
 
         //Atria
         public BoolResult AtriaSize = new BoolResult("Normally sized atria", "", true);
-        public BoolResult AtriaSeptum = new BoolResult("Intact atrial septum", "", true);
 
-        public MultipleChoiceResult AtriaLeft = new MultipleChoiceResult("", new List<string>() {   "",
+        public MultipleChoiceResult DilatedAtriaLeft = new MultipleChoiceResult("", new List<string>() {   "",
                                                                                                     "Mildly",
                                                                                                     "Moderately",
                                                                                                     "Severely" }, "dilated left atrium");
 
-        public MultipleChoiceResult AtriaRight = new MultipleChoiceResult("", new List<string>() {  "",
+        public MultipleChoiceResult DilatedAtriaRight = new MultipleChoiceResult("", new List<string>() {  "",
                                                                                                     "Mildly",
                                                                                                     "Moderately",
                                                                                                     "Severely" }, "dilated right atrium");
 
-        public MultipleChoiceResult AtriaBilateral = new MultipleChoiceResult("", new List<string>() {  "",
-                                                                                                        "Mildly",
-                                                                                                        "Moderately",
-                                                                                                        "Severely" }, "dilated atria bilaterally");
+        public MultipleChoiceResult HypoplasticAtriaLeft = new MultipleChoiceResult("", new List<string>() {   "",
+                                                                                                    "Mildly",
+                                                                                                    "Moderately",
+                                                                                                    "Severely" }, "hypoplastic left atrium");
 
-        public MultipleChoiceResult AtriaPatentForamenOvale = new MultipleChoiceResult("Patent foramen ovale with", new List<string>() {"",
-                                                                                                                                        "L-R shunt",
-                                                                                                                                        "R-L shunt",
-                                                                                                                                        "bidirectional shunt" });
-        public MultipleChoiceResult ASD1 = new MultipleChoiceResult("", new List<string>() {"",
-                                                                                            "Small",
-                                                                                            "Moderate",
-                                                                                            "Large" });
+        public MultipleChoiceResult HypoplasticAtriaRight = new MultipleChoiceResult("", new List<string>() {  "",
+                                                                                                    "Mildly",
+                                                                                                    "Moderately",
+                                                                                                    "Severely" }, "hypoplastic right atrium");
 
-        public MultipleChoiceResult ASD2 = new MultipleChoiceResult("", new List<string>() {"secundum ASD",
-                                                                                            "primum ASD",
-                                                                                            "superior sinus venousus defect with partial anomalous pulmonary venous drainage" });
-
-        public MultipleChoiceResult ASD3 = new MultipleChoiceResult(" with", new List<string>() {"L-R shunt",
-                                                                                                "R-L shunt",
-                                                                                                "bidirectional shunt" });
 
         //AV Valves
         public MultipleChoiceResult AVConnection = new MultipleChoiceResult("", new List<string>() {   "Atrioventricular concordance",
@@ -70,11 +58,13 @@ namespace FetalReporting.Data {
                                                                                                         "moderate regurgitation",
                                                                                                         "severe regurgitation" });
 
-        public MultipleChoiceResult MitralValve3 = new MultipleChoiceResult(" and", new List<string>() {  "no stenosis",
-                                                                                                        "mild stenosis",
-                                                                                                        "moderate stenosis",
-                                                                                                        "severe stenosis" });
-        public BoolResult MitralValveProlapse = new BoolResult("No mitral valve prolapse");
+        public MultipleChoiceResult MitralValve3 = new MultipleChoiceResult(" and", new List<string>() {    "",
+                                                                                                            "no stenosis",
+                                                                                                            "mild stenosis",
+                                                                                                            "moderate stenosis",
+                                                                                                            "severe stenosis" });
+        public BoolResult MitralValveAtresia = new BoolResult("Mitral valve atresia");
+
 
         public MultipleChoiceResult TriscupidValve1 = new MultipleChoiceResult("", new List<string>() {     "Normal tricuspid valve",
                                                                                                             "",
@@ -87,11 +77,13 @@ namespace FetalReporting.Data {
                                                                                                             "moderate regurgitation",
                                                                                                             "severe regurgitation" });
 
-        public MultipleChoiceResult TriscupidValve3 = new MultipleChoiceResult(" and", new List<string>() {   "no stenosis",
+        public MultipleChoiceResult TriscupidValve3 = new MultipleChoiceResult(" and", new List<string>() { "",
+                                                                                                            "no stenosis",
                                                                                                             "mild stenosis",
                                                                                                             "moderate stenosis",
                                                                                                             "severe stenosis" });
-        public BoolResult InsufficientTR = new BoolResult("Insufficient TR to estimate RV pressure");
+        public BoolResult TriscupidValveAtresia = new BoolResult("Triscupid valve atresia");
+
 
 
 
@@ -126,7 +118,8 @@ namespace FetalReporting.Data {
 
         public MultipleChoiceResult VentricleFunction = new MultipleChoiceResult("", new List<string>() { "Normal biventricular size and function",
                                                                                                             "Normal LV function",
-                                                                                                            "Normal RV function" });
+                                                                                                            "Normal RV function",
+                                                                                                            "RV larger than LV"});
         public BoolResult VentricularHypertrophy = new BoolResult("No ventricular hypertrophy");
 
 
@@ -145,8 +138,10 @@ namespace FetalReporting.Data {
                                                                                             "Moderately",
                                                                                             "Severely" }, "reduced LV function");
 
-        public BoolResult LVSystolicFunction = new BoolResult("Hyperdynamic LV systolic function");
-        public BoolResult NormalDiastolic = new BoolResult("Normal diastolic functional parameters");
+        public MultipleChoiceResult HypoplasticLV = new MultipleChoiceResult("", new List<string>() { "",
+                                                                                            "Mildly",
+                                                                                            "Moderately",
+                                                                                            "Severely" }, "hypoplastic LV");
 
         public MultipleChoiceResult DilatedRV = new MultipleChoiceResult("", new List<string>() { "",
                                                                                             "Mildly",
@@ -163,13 +158,14 @@ namespace FetalReporting.Data {
                                                                                             "Moderately",
                                                                                             "Severely" }, "reduced RV function");
 
-        public MultipleChoiceResult SeptalMotion = new MultipleChoiceResult("", new List<string>() {"Normal septal curvature",
-                                                                                                    "Flattened septal motion",
-                                                                                                    "Diastolic septal flattening",
-                                                                                                    "Dyskinetic septal motion" });
+        public MultipleChoiceResult HypoplasticRV = new MultipleChoiceResult("", new List<string>() { "",
+                                                                                            "Mildly",
+                                                                                            "Moderately",
+                                                                                            "Severely" }, "hypoplastic RV");
+
 
         public BoolResult IntactVentricularSeptum = new BoolResult("Intact ventricular septum", "", true);
-        public BoolResult ResidualVSD = new BoolResult("No residual VSD");
+
 
         public MultipleChoiceResult VSD1 = new MultipleChoiceResult("", new List<string>() {"",
                                                                                             "Small",
@@ -195,29 +191,26 @@ namespace FetalReporting.Data {
                                                                                                             "Ventriculoarterial discordance" });
 
         public BoolResult OutflowTracts = new BoolResult("Unobstructed outflow tracts", "", true);
-        public BoolResult SubAorticMembrane = new BoolResult("Sub-aortic membrane");
 
-        public MultipleChoiceResult AorticValve1 = new MultipleChoiceResult("", new List<string>() {    "Trileaflet aortic valve",
-                                                                                                        "Bicuspid aortic valve"});
+
+        public MultipleChoiceResult AorticValve1 = new MultipleChoiceResult("", new List<string>() {    "Thin mobile aortic valve leaflets",
+                                                                                                        "Thickened dysplatic aortic valve leaflets"});
 
         public MultipleChoiceResult AorticValve2 = new MultipleChoiceResult(" with", new List<string>() {  "no stenosis",
                                                                                                             "mild stenosis",
                                                                                                             "moderate stenosis",
                                                                                                             "severe stenosis" });
 
-        public MultipleChoiceResult AorticValve3 = new MultipleChoiceResult(" and", new List<string>() { "no regurgitation",
-                                                                                                        "trivial regurgitation",
-                                                                                                        "mild regurgitation",
-                                                                                                        "moderate regurgitation",
-                                                                                                        "severe regurgitation" });
-        public BoolResult AorticValveLeaflets = new BoolResult("Thickened aortic valve leaflets");
-        public BoolResult AorticValveProlapse = new BoolResult("No aortic valve prolapse");
+        public MultipleChoiceResult AorticValve3 = new MultipleChoiceResult(" and", new List<string>() {    "",
+                                                                                                            "no regurgitation",
+                                                                                                            "trivial regurgitation",
+                                                                                                            "mild regurgitation",
+                                                                                                            "moderate regurgitation",
+                                                                                                            "severe regurgitation" });
+
         public BoolResult AortaVSDOvveride = new BoolResult("Aorta overrides the VSD");
         public BoolResult LossSinotubularJunction = new BoolResult("Loss of the sinotubular junction");
 
-        public MultipleChoiceResult SubPulmonaryStenosis = new MultipleChoiceResult("", new List<string>() {    "",
-                                                                                                                "Muscular",
-                                                                                                                "Fibromuscular"}, "sub-pulmonary stenosis");
 
         public MultipleChoiceResult PulmonaryValve1 = new MultipleChoiceResult("", new List<string>() { "Normal pulmonary valve",
                                                                                                         "Thickened and doming pulmonary valve leaflets"});
@@ -227,11 +220,12 @@ namespace FetalReporting.Data {
                                                                                                             "moderate stenosis",
                                                                                                             "severe stenosis" });
 
-        public MultipleChoiceResult PulmonaryValve3 = new MultipleChoiceResult(" and", new List<string>() { "no regurgitation",
-                                                                                                        "trivial regurgitation",
-                                                                                                        "mild regurgitation",
-                                                                                                        "moderate regurgitation",
-                                                                                                        "severe regurgitation" });
+        public MultipleChoiceResult PulmonaryValve3 = new MultipleChoiceResult(" and", new List<string>() { "",
+                                                                                                            "no regurgitation",
+                                                                                                            "trivial regurgitation",
+                                                                                                            "mild regurgitation",
+                                                                                                            "moderate regurgitation",
+                                                                                                            "severe regurgitation" });
         //Great Arteries
         public MultipleChoiceResult LeftAorticArch1 = new MultipleChoiceResult("", new List<string>() { "Unobstructed left sided aortic arch",
                                                                                                         "Left sided aortic arch",
@@ -250,52 +244,44 @@ namespace FetalReporting.Data {
                                                                                                         "with mirror image branching",
                                                                                                         "with aberrant left subclavian artery (with a left sided ductal ligament this is the setup for a vascular ring)" });
 
-        public BoolResult NoCoarctationAorta = new BoolResult("No coarctation of the aorta", "", true);
 
-        public MultipleChoiceResult CoarctationAorta = new MultipleChoiceResult("Coarctation of the aorta with", new List<string>() { "diastolic run-off ",
-                                                                                                                                        "no diastolic run-off" });
+        public BoolResult BranchPulmonaryArteries = new BoolResult("Normal branch pulmonary arteries", "", true);
 
-        public MultipleChoiceResult BranchPulmonaryArteries = new MultipleChoiceResult("", new List<string>() { "Normal branch pulmonary arteries",
-                                                                                                                "",
-                                                                                                                "Physiological branch pulmonary artery narrowing" });
+        public MultipleChoiceResult DuctusArteriosus1 = new MultipleChoiceResult("", new List<string>() {
+                                                                                                        "Normal ductus arteriosus",
+                                                                                                        "Tortuous ductus arteriosus",
+                                                                                                        "Ductal constriction",
+                                                                                                        "Aneurysmal dilatation of the ductus arteriosus"});
 
-        public BoolResult NoPatentDuctusArteriosus = new BoolResult("No patent ductus arteriosus", "", true);
+        public MultipleChoiceResult DuctusArteriosus2 = new MultipleChoiceResult(" with", new List<string>() {
+                                                                                                        "antegrade flow",
+                                                                                                        "retrograde flow" });
 
-        public MultipleChoiceResult PatentDuctusArteriosus1 = new MultipleChoiceResult("", new List<string>() {   "",
-                                                                                                                "Small",
-                                                                                                                "Moderate",
-                                                                                                                "Large" });
-
-        public MultipleChoiceResult PatentDuctusArteriosus2 = new MultipleChoiceResult(" patent ductus arteriosus with", new List<string>() {"L-R shunt",
-                                                                                                                                            "R-L shunt",
-                                                                                                                                            "bidirectional shunt" });
         //Pulmonary Veins
 
         public MultipleChoiceResult PulmonaryVeins = new MultipleChoiceResult("", new List<string>() {  "Normal pulmonary venous connection",
                                                                                                         "Partial anomalous pulmonary venous drainage",
+                                                                                                        "Total anomalous pulmonary venous connection",
                                                                                                         "Not evaluated" });
 
         //Coronary Arteries
-        public MultipleChoiceResult CoronaryArteries = new MultipleChoiceResult("", new List<string>() {"Normal proximal coronary origins",
-                                                                                                        "LAD not well seen",
-                                                                                                        "Circumflex not well seen",
-                                                                                                        "RCA not well seen",
-                                                                                                        "Not evaluated",
-                                                                                                        "" }, "", true);
+
         //Other
-        public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion", "", false);
+        public BoolResult NoPerciardialEffusion = new BoolResult("No perciardial effusion");
 
         public MultipleChoiceResult PerciardialEffusion = new MultipleChoiceResult("", new List<string>() {  "",
                                                                                                             "Small",
                                                                                                             "Moderate",
                                                                                                             "Large" }, "perciardial effusion");
+
+        public BoolResult NoFetalHydrops = new BoolResult("No fetal hydrops");
+        public BoolResult PleuralEffusion = new BoolResult("Pleural effusion");
+        public BoolResult Ascites = new BoolResult("Ascites");
         // Conclusion
         public MultipleChoiceResult Conclusion = new MultipleChoiceResult("Conclusion:", new List<string>() { "Normal",
-                                                                                                                "Normal with PFO",
                                                                                                                 "Muscular VSD",
-                                                                                                                "Muscular VSD with PFO",
                                                                                                                 "Perimembranous VSD",
-                                                                                                                "Perimembranous VSD with PFO",
-                                                                                                                "Pulmonary stenosis"});
+                                                                                                                "Aberrant right subclavian artery",
+                                                                                                                "Right aortic arch with aberrant left subclavian artery"});
     }
 }

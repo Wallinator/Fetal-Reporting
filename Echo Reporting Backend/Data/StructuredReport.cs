@@ -43,26 +43,40 @@ namespace FetalReporting.Data {
 
 
         private void AddCalculatedValues() {
-            var r1 = Results["Pulmonary valve end diastolic velocity"];
-            Result final1;
-            if (!r1.Empty) {
-                final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r1.Value, 2));
-            }
-            else {
-                final1 = new Result("Pulmonary valve end diastolic peak gradient", "mmHg");
-            }
-            Results["Pulmonary valve end diastolic peak gradient"] = final1;
+            Result x;
+            Result y;
 
 
-            var r2 = Results["Patent Ductus Arteriosus peak velocity systole"];
-            Result final2;
-            if (!r2.Empty) {
-                final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg", empty: false, value: 4 * Math.Pow(r2.Value, 2));
+            y = Results["Tricuspid valve regurgitation peak gradient"];
+            if(Results.TryGetValue("Tricuspid valve regurgitation peak velocity", out x)) {
+                y.Value = 4 * x.Value * x.Value;
+                y.Empty = false;
             }
             else {
-                final2 = new Result("Patent Ductus Arteriosus peak gradient", "mmHg");
+                y.Value = 0;
+                y.Empty = true;
             }
-            Results["Patent Ductus Arteriosus peak gradient"] = final2;
+
+            y = Results["Pulmonary valve peak gradient"];
+            if(Results.TryGetValue("Pulmonary valve peak velocity", out x)) {
+                y.Value = 4 * x.Value * x.Value;
+                y.Empty = false;
+            }
+            else {
+                y.Value = 0;
+                y.Empty = true;
+            }
+
+            y = Results["Aortic valve peak gradient"];
+            if(Results.TryGetValue("Aortic valve peak velocity", out x)) {
+                y.Value = 4 * x.Value * x.Value;
+                y.Empty = false;
+            }
+            else {
+                y.Value = 0;
+                y.Empty = true;
+            }
+
         }
     }
 }
