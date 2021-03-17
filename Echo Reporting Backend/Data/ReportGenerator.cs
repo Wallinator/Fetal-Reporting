@@ -1,8 +1,7 @@
-﻿using FetalReporting.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace Echo_Reporting_Backend.Data {
+namespace FetalReporting.Data {
     public static class ReportGenerator {
         public static string GenerateHTML(StructuredReport report, int fontSize) {
 

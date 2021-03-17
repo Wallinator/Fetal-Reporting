@@ -1,5 +1,4 @@
-﻿using Echo_Reporting_Backend.Data;
-using FetalReporting.Data;
+﻿using FetalReporting.Data;
 using PuppeteerSharp;
 using PuppeteerSharp.Media;
 using System;
@@ -76,7 +75,7 @@ namespace Fetal_Reporting_Windows_App {
         private void GenerateReport(bool asPDF) {
             var name = _report.PatientData.PatientID.Value;
             // ch
-            var date = _report.PatientData.StudyDate.Value.Replace("/", "-");
+            var date = "";//_report.PatientData.StudyDate.Value.Replace("/", "-");
             saveFileDialog1.FileName = name + " Echo " + date;
             if (asPDF) {
                 saveFileDialog1.DefaultExt = "pdf";

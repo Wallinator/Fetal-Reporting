@@ -1,9 +1,8 @@
-﻿using FetalReporting.Data;
-using FetalReporting.Data.Results;
+﻿using FetalReporting.Data.Results;
 using System;
 using System.Collections.Generic;
 
-namespace Echo_Reporting_Backend.Data {
+namespace FetalReporting.Data {
     public class ReportSections {
         public string Situs = "";
         public string SystemicVeins = "";
@@ -27,7 +26,7 @@ namespace Echo_Reporting_Backend.Data {
             SetOutletsText(sr);
             SetGreatArteriesText(sr);
             PulmonaryVeins = OptionsToString(sr.ReportingOptions.PulmonaryVeins);
-            SetOtherText(sr)
+            SetOtherText(sr);
             if (!sr.ReportingOptions.NoPerciardialEffusion.Value) {
                 Other += OptionsToString(sr.ReportingOptions.PerciardialEffusion);
             }
@@ -96,7 +95,7 @@ namespace Echo_Reporting_Backend.Data {
                                           sr.ReportingOptions.VSD2,
                                           sr.ReportingOptions.VSD3);
             Ventricles += BoolResultToString(sr.ReportingOptions.VSDDescription);
-            Ventricles += ResultToString(sr.Results["Ventricular Septal Defect dimension"]);
+            Ventricles += ResultToString(sr.Results["Ventricular septal defect dimension"]);
             Ventricles += HighestResultToString(sr.Results["Cardiothoracic circumference ratio"], sr.Results["Cardiothoracic area ratio"]);
             Ventricles += ResultToString(sr.Results["Mechanical PR interval"]);
         }
@@ -111,9 +110,6 @@ namespace Echo_Reporting_Backend.Data {
             Outlets += ResultToString(sr.Results["Aortic valve annulus"]);
             Outlets += ResultToString(sr.Results["Aortic valve peak velocity"]);
             Outlets += ResultToString(sr.Results["Aortic valve peak gradient"]);
-
-            Outlets += ResultToString(sr.Results["Aortic valve mean gradient"]);
-            Outlets += ResultToString(sr.Results["Aortic valve pressure half-time"]);
 
             Outlets += BoolResultToString(sr.ReportingOptions.AortaVSDOvveride);
             Outlets += BoolResultToString(sr.ReportingOptions.LossSinotubularJunction);

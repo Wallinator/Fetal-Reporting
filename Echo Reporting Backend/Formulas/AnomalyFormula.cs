@@ -21,7 +21,7 @@ namespace FetalReporting.Formulas {
             }
         }
         public override double GetZScore(double observed_y) {
-            throw new NotImplementedException();
+            return observed_y;
         }
         public override bool ZScoreable() => false;
         public static AnomalyFormula HeartRate() {

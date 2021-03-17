@@ -23,7 +23,7 @@ namespace FetalReporting.Data.Results {
             list.Add(new Result("LV length", "mm", SchneiderFormula.LVLength(Pd, "LV length")));
             list.Add(new Result("Descending aorta", "mm", SchneiderFormula.DescendingAorta(Pd, "Descending aorta")));
             list.Add(new Result("Right pulmonary artery", "mm", SchneiderFormula.RightPulmonaryArtery(Pd, "Right pulmonary artery")));
-            list.Add(new Result("Left Pulmonary artery", "mm", SchneiderFormula.LeftPulmonaryArtery(Pd, "Left Pulmonary artery")));
+            list.Add(new Result("Left pulmonary artery", "mm", SchneiderFormula.LeftPulmonaryArtery(Pd, "Left Pulmonary artery")));
             list.Add(new Result("Ductus arteriosus sagittal", "mm", SchneiderFormula.DuctusArteriosusSagittal(Pd, "Ductus arteriosus sagittal")));
 
             list.Add(new Result("Ductus arteriosus 3VV", "mm", PasquiniFormula.DuctusArteriosus3VV(Pd, "Ductus arteriosus 3VV")));
@@ -44,7 +44,6 @@ namespace FetalReporting.Data.Results {
             list.Add(new Result("Ductus arteriosus peak velocity", "cm/s", AnomalyFormula.DuctusArteriosusPeakVelocity()));
 
             list.Add(new Result("Tricuspid valve regurgitation peak velocity", "cm/s"));
-            list.Add(new Result("Ductus arteriosus peak velocity", "cm/s"));
             list.Add(new Result("LV IVRT", "ms"));
             list.Add(new Result("Mechanical PR interval", "ms"));
             list.Add(new Result("Ventricular septal defect dimension", "mm"));

@@ -1,5 +1,4 @@
-﻿using Echo_Reporting_Backend.Data;
-using FetalReporting.Data.Results;
+﻿using FetalReporting.Data.Results;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,16 +25,14 @@ namespace FetalReporting.Data {
             writer.WriteLine(html);
             writer.Close();
         }
-        public StructuredReport(PatientData patientData, Dictionary<string, Result> results, ReportingOptions options) {
+        public StructuredReport(PatientData patientData, ReportingOptions options) {
             ReportingOptions = options;
             PatientData = patientData;
-            Results = results;
+            ResultsHelper.GetEmptyResults(patientData).ForEach(x => Results.Add(x.Name, x));
         }
-        public StructuredReport() : this(new PatientData(), new Dictionary<string, Result>(), new ReportingOptions()) {
+        public StructuredReport() : this(new PatientData(), new ReportingOptions()) {
         }
-        public StructuredReport(PatientData patientData) : this(patientData, new Dictionary<string, Result>(), new ReportingOptions()) {
-        }
-        public StructuredReport(PatientData patientData, Dictionary<string, Result> results) : this(patientData, results, new ReportingOptions()) {
+        public StructuredReport(PatientData patientData) : this(patientData, new ReportingOptions()) {
         }
         public void GenerateSections() {
             Sections = new ReportSections(this);
