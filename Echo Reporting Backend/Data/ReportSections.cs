@@ -1,5 +1,6 @@
 ﻿using FetalReporting.Data;
 using FetalReporting.Data.Results;
+using System;
 using System.Collections.Generic;
 
 namespace Echo_Reporting_Backend.Data {
@@ -96,8 +97,7 @@ namespace Echo_Reporting_Backend.Data {
                                           sr.ReportingOptions.VSD3);
             Ventricles += BoolResultToString(sr.ReportingOptions.VSDDescription);
             Ventricles += ResultToString(sr.Results["Ventricular Septal Defect dimension"]);
-            Ventricles += ResultToString(sr.Results["Cardiothoracic circumference ratio"]);
-            Ventricles += ResultToString(sr.Results["Cardiothoracic area ratio"]);
+            Ventricles += HighestResultToString(sr.Results["Cardiothoracic circumference ratio"], sr.Results["Cardiothoracic area ratio"]);
             Ventricles += ResultToString(sr.Results["Mechanical PR interval"]);
         }
         private void SetOutletsText(StructuredReport sr) {
@@ -132,8 +132,7 @@ namespace Echo_Reporting_Backend.Data {
                                              sr.ReportingOptions.LeftAorticArch2);
 
             GreatArteries += ResultToString(sr.Results["Ascending aorta"]);
-            GreatArteries += ResultToString(sr.Results["Aortic isthmus 3VV"]);
-            GreatArteries += ResultToString(sr.Results["Aortic isthmus sagittal"]);
+            GreatArteries += HighestResultToString(sr.Results["Aortic isthmus 3VV"], sr.Results["Aortic isthmus sagittal"]);
 
             GreatArteries += OptionsToString(sr.ReportingOptions.RightAorticArch1,
                                              sr.ReportingOptions.RightAorticArch2);
@@ -147,8 +146,7 @@ namespace Echo_Reporting_Backend.Data {
             GreatArteries += OptionsToString(sr.ReportingOptions.DuctusArteriosus1,
                                              sr.ReportingOptions.DuctusArteriosus2);
 
-            GreatArteries += ResultToString(sr.Results["Ductus arteriosus 3VV"]);
-            GreatArteries += ResultToString(sr.Results["Ductus arteriosus sagittal"]);
+            GreatArteries += HighestResultToString(sr.Results["Ductus arteriosus 3VV"], sr.Results["Ductus arteriosus sagittal"]);
             GreatArteries += ResultToString(sr.Results["Ductus arteriosus peak velocity"]);
             GreatArteries += ResultToString(sr.Results["Descending Aorta"]);
         }
@@ -162,6 +160,19 @@ namespace Echo_Reporting_Backend.Data {
         private string BoolResultToString(BoolResult r) {
             string final = r.Value ? r.TrueText : r.FalseText;
             return final.Length == 0 ? final : final + ". ";
+        }
+
+        private string HighestResultToString(Result r1, Result r2) {
+            Result main, second;
+            if(Math.Abs(r1.ZScore) > Math.Abs(r2.ZScore)) {
+                main = r1;
+                second = r2;
+            }
+            else {
+                main = r2;
+                second = r1;
+            }
+            return ResultToString(main);
         }
         private string ResultToString(Result r, bool includeZScore = true, bool includeComment = true) {
             if (r.Empty) {
