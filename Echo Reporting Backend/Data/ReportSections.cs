@@ -144,7 +144,7 @@ namespace FetalReporting.Data {
 
             GreatArteries += HighestResultToString(sr.Results["Ductus arteriosus 3VV"], sr.Results["Ductus arteriosus sagittal"]);
             GreatArteries += ResultToString(sr.Results["Ductus arteriosus peak velocity"]);
-            GreatArteries += ResultToString(sr.Results["Descending Aorta"]);
+            GreatArteries += ResultToString(sr.Results["Descending aorta"]);
         }
         private void SetOtherText(StructuredReport sr) {
             Other = BoolResultToString(sr.ReportingOptions.NoPerciardialEffusion);

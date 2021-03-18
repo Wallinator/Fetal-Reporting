@@ -40,6 +40,8 @@ namespace FetalReporting.Formulas {
             return new AnomalyFormula(new Constants("Ductus arteriosus velocity", 150.0, new[] { "Normal", "Increased" }));
         }
 
+        public override bool HasFLGASwitch() => false;
+
         private AnomalyFormula(Constants constants) {
             this.constants = constants;
         }

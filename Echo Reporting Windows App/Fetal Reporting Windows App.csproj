@@ -100,6 +100,8 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="PuppeteerSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PuppeteerSharp.2.0.4\lib\netstandard2.0\PuppeteerSharp.dll</HintPath>
     </Reference>
@@ -157,6 +159,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -165,6 +168,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\ComboListBox.cs">
@@ -175,6 +181,12 @@
     </Compile>
     <Compile Include="Controls\DateFieldControl.Designer.cs">
       <DependentUpon>DateFieldControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DatePickerPopupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\DatePickerPopupForm.Designer.cs">
+      <DependentUpon>DatePickerPopupForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -216,6 +228,9 @@
     </Compile>
     <EmbeddedResource Include="Controls\DateFieldControl.resx">
       <DependentUpon>DateFieldControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\DatePickerPopupForm.resx">
+      <DependentUpon>DatePickerPopupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

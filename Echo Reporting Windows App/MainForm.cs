@@ -1,6 +1,7 @@
 ﻿using FetalReporting.Data;
 using FetalReporting.Data.Results;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -27,19 +28,26 @@ namespace Fetal_Reporting_Windows_App {
         private void ShowAllResults() {
             ShowAllResults(false);
         }
+        public void UpdateGAge() {
+            report.PatientData.UpdateGestationalAgeResult();
+            GestAgeControl.UpdateValue();
+        }
+        private ResultControl GestAgeControl;
         private void ShowAllResults(bool showNotFoundError) {
             panel3.Visible = false;
-            ClearAllPanels();
             // Patient Data
             #region
+            ResultControl FemurLengthControl = new ResultControl(report.PatientData.FemurLength, showNotFoundError, this);
+            GestAgeControl = new ResultControl(report.PatientData.GestationalAge, showNotFoundError, this, FemurLengthControl);
+            GestationAgePanel.Controls.Add(GestAgeControl);
             PatientIDPanel.Controls.Add(new StringFieldControl(report.PatientData.PatientID));
             PatientNamePanel.Controls.Add(new StringFieldControl(report.PatientData.PatientName));
             DOBPanel.Controls.Add(new StringFieldControl(report.PatientData.PatientDOB));
-            //StudyDatePanel.Controls.Add(new StringFieldControl(report.PatientData.StudyDate));
-            FemurLengthPanel.Controls.Add(new ResultControl(report.PatientData.FemurLength, showNotFoundError, this));
+            StudyDatePanel.Controls.Add(new DateFieldControl(report.PatientData.StudyDate, UpdateGAge));
+            FemurLengthPanel.Controls.Add(FemurLengthControl);
             AgePanel.Controls.Add(new ResultControl(report.PatientData.PatientAge, showNotFoundError, this));
-            GestationAgePanel.Controls.Add(new ResultControl(report.PatientData.GestationalAge, showNotFoundError, this));
-            //EstimatedDueDatePanel.Controls.Add(new ResultControl(report.PatientData.EstimatedDueDate, showNotFoundError, this));
+
+            EstimatedDueDatePanel.Controls.Add(new DateFieldControl(report.PatientData.EstimatedDueDate, UpdateGAge));
 
             ReasonForStudyPanel.Controls.Add(new StringFieldControl(report.PatientData.ReasonForStudy));
             ReferringPhysicianPanel.Controls.Add(new StringFieldControl(report.PatientData.ReferringPhysician));
@@ -71,7 +79,7 @@ namespace Fetal_Reporting_Windows_App {
             LAVV2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV2));
             LAVV3Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.LAVV3));
 
-            MVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Mitral valve annulus"], showNotFoundError, this));
+            MVAnnulusPanel.Controls.Add(new ResultControl(report.Results["Mitral valve annulus"], showNotFoundError, this, GestAgeControl));
 
             Tri1Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.TriscupidValve1));
             Tri2Panel.Controls.Add(new StringDropDownControl(report.ReportingOptions.TriscupidValve2));
@@ -206,291 +214,7 @@ namespace Fetal_Reporting_Windows_App {
             panel3.AutoScrollPosition = new Point(0, 0);
             panel3.Visible = true;
         }
-        private void ClearAllPanels() {
-        }/*{
-            // Patient Data
-            #region
-            PatientIDPanel.Controls.Clear();
-            PatientNamePanel.Controls.Clear();
-            PatientSexPanel.Controls.Clear();
-            DOBPanel.Controls.Clear();
-            StudyDatePanel.Controls.Clear();
-            AgePanel.Controls.Clear();
-            HeightPanel.Controls.Clear();
-            WeightPanel.Controls.Clear();
-            BSAPanel.Controls.Clear();
-            GestationAgePanel.Controls.Clear();
-            EstimatedDueDatePanel.Controls.Clear();
-            ReasonForStudyPanel.Controls.Clear();
-            ReferringPhysicianPanel.Controls.Clear();
-            EchoTypePanel.Controls.Clear();
-            ReportingDoctorPanel.Controls.Clear();
-            #endregion
-            // Table
-            #region
-            IVSdPanel.Controls.Clear();
-            LVIDdPanel.Controls.Clear();
-            LVPWdPanel.Controls.Clear();
-
-            IVSsPanel.Controls.Clear();
-            LVIDsPanel.Controls.Clear();
-            LVPWsPanel.Controls.Clear();
-
-
-            MVEWavePanel.Controls.Clear();
-            MVAWavePanel.Controls.Clear();
-            MVDecelTimePanel.Controls.Clear();
-            MitralAnnulusEPanel.Controls.Clear();
-            SeptalAnnulusEPanel.Controls.Clear();
-            RVEPanel.Controls.Clear();
-
-            FractionalShorteningPanel.Controls.Clear();
-            LVTeichholzEFPanel.Controls.Clear();
-            LVMassIndexPanel.Controls.Clear();
-            HeartRatePanel.Controls.Clear();
-            MVCFcPanel.Controls.Clear();
-            LVOutputPanel.Controls.Clear();
-            #endregion
-            // Situs and Systemic Veins
-            #region
-            SitusPanel.Controls.Clear();
-            SystemicVeinsPanel.Controls.Clear();
-            #endregion
-            // Atria
-            #region
-            NormalAtriaPanel.Controls.Clear();
-            IntactAtrialSeptumPanel.Controls.Clear();
-            DilatedLeftAtriumPanel.Controls.Clear();
-            DilatedRightAtriumPanel.Controls.Clear();
-            HypoplasticLeftAtriumPanel.Controls.Clear();
-            HypoplasticRightAtriumPanel.Controls.Clear();
-            ASD1Panel.Controls.Clear();
-            ASD2Panel.Controls.Clear();
-            ASD3Panel.Controls.Clear();
-            ASDDimensionPanel.Controls.Clear();
-            ASDGradientPanel.Controls.Clear();
-            #endregion
-            // AV Valves
-            #region
-            AVConnectionPanel.Controls.Clear();
-            MV1Panel.Controls.Clear();
-            MV2Panel.Controls.Clear();
-            MV3Panel.Controls.Clear();
-            MitralAtresiaPanel.Controls.Clear();
-
-            LAVV1Panel.Controls.Clear();
-            LAVV2Panel.Controls.Clear();
-            LAVV3Panel.Controls.Clear();
-
-            MVAnnulusPanel.Controls.Clear();
-            //MVEPanel.Controls.Clear();
-            //MVAPanel.Controls.Clear();
-            MVEARatioPanel.Controls.Clear();
-            //MVInflowAPanel.Controls.Clear();
-            //MVDecelPanel.Controls.Clear();
-            MVInflowGradPanel.Controls.Clear();
-            MVRegurgVelPanel.Controls.Clear();
-            MVRegurgGradPanel.Controls.Clear();
-
-            Tri1Panel.Controls.Clear();
-            Tri2Panel.Controls.Clear();
-            Tri3Panel.Controls.Clear();
-            RAVV1Panel.Controls.Clear();
-            RAVV2Panel.Controls.Clear();
-
-            InsufficentTRPanel.Controls.Clear();
-            TVAnnulusPanel.Controls.Clear();
-            TVInflowPanel.Controls.Clear();
-            TVRegurgVelPanel.Controls.Clear();
-            TVRegurgGradPanel.Controls.Clear();
-
-            #endregion
-            // Ventricles
-            #region
-            VentricleSizeFunctionPanel.Controls.Clear();
-            VentricularHypertrophyPanel.Controls.Clear();
-
-            //IVSd2Panel.Controls.Clear();
-            //LVIDd2Panel.Controls.Clear();
-            //LVPWd2Panel.Controls.Clear();
-            //LVMassIndex2Panel.Controls.Clear();
-            //FractionalShortening2Panel.Controls.Clear();
-            //LVTeichholz2Panel.Controls.Clear();
-            HeartRatePanel.Controls.Clear();
-            LVApical42Panel.Controls.Clear();
-            //HeartRate2Panel.Controls.Clear();
-
-
-            DilatedLVPanel.Controls.Clear();
-            HypertrophyLVPanel.Controls.Clear();
-            ReducedLVPanel.Controls.Clear();
-
-            LVHypoplasticPanel.Controls.Clear();
-            LVDiastolicPanel.Controls.Clear();
-
-            LVIVRTPanel.Controls.Clear();
-            MyoPIPanel.Controls.Clear();
-
-            PulmSWavePanel.Controls.Clear();
-            PulmDWavePanel.Controls.Clear();
-            PulmAWavePanel.Controls.Clear();
-
-            PulmWaveDurationPanel.Controls.Clear();
-            MitralWaveDurationPanel.Controls.Clear();
-
-            //MitralAnnulusE2Panel.Controls.Clear();
-            MitralAnnulusA2Panel.Controls.Clear();
-            MitralAnnulusS2Panel.Controls.Clear();
-
-            //SeptalAnnulusE2Panel.Controls.Clear();
-            SeptalAnnulusA2Panel.Controls.Clear();
-            SeptalAnnulusS2Panel.Controls.Clear();
-
-            //TriAnnulusE2Panel.Controls.Clear();
-            TriAnnulusA2Panel.Controls.Clear();
-            TriAnnulusS2Panel.Controls.Clear();
-
-            DilatedRVPanel.Controls.Clear();
-            HypertrophyRVPanel.Controls.Clear();
-            ReducedRVPanel.Controls.Clear();
-
-            HypoplasticRVPanel.Controls.Clear();
-            VentricularSeptumPanel.Controls.Clear();
-            ResidualVSDPanel.Controls.Clear();
-
-            VSD1Panel.Controls.Clear();
-            VSD2Panel.Controls.Clear();
-            VSD3Panel.Controls.Clear();
-            VSDDescPanel.Controls.Clear();
-
-            VSDDimensionPanel.Controls.Clear();
-            MechPRPanel.Controls.Clear();
-            CardioAreaPanel.Controls.Clear();
-            #endregion
-            // Outlets
-            #region
-            VentriculoarterialPanel.Controls.Clear();
-            OutflowTractsPanel.Controls.Clear();
-            SubAorticMembranePanel.Controls.Clear();
-
-            LVODimensionPanel.Controls.Clear();
-            LVOVelocityPanel.Controls.Clear();
-            LVOPeakPanel.Controls.Clear();
-            LVOMeanPanel.Controls.Clear();
-
-            AorticValve1Panel.Controls.Clear();
-            AorticValve2Panel.Controls.Clear();
-            AorticValve3Panel.Controls.Clear();
-
-            AVAnnulusPanel.Controls.Clear();
-            AVVelocityPanel.Controls.Clear();
-            AVPeakGradPanel.Controls.Clear();
-            AVMeanPanel.Controls.Clear();
-            PressureHalfTimePanel.Controls.Clear();
-
-            AVLeafletsPanel.Controls.Clear();
-            AVProlapsePanel.Controls.Clear();
-            AortaVSDPanel.Controls.Clear();
-            LossSinotubularPanel.Controls.Clear();
-            SubPulmonaryStenosisPanel.Controls.Clear();
-
-            RVODimensionPanel.Controls.Clear();
-            RVOVelocityPanel.Controls.Clear();
-            RVOPeakPanel.Controls.Clear();
-            RVOMeanPanel.Controls.Clear();
-
-            PV1Panel.Controls.Clear();
-            PV2Panel.Controls.Clear();
-            PV3Panel.Controls.Clear();
-
-            PVAnnulusPanel.Controls.Clear();
-            PVVelocityPanel.Controls.Clear();
-            PVPeakGradPanel.Controls.Clear();
-            PVMeanPanel.Controls.Clear();
-            PVEndDiaVelPanel.Controls.Clear();
-            PVEndDiaGradPanel.Controls.Clear();
-
-            #endregion
-            // Great Arteries
-            #region
-            LeftAorticArch1Panel.Controls.Clear();
-            LeftAorticArch2Panel.Controls.Clear();
-
-            SinusValsavaPanel.Controls.Clear();
-            SinotubularJunctionPanel.Controls.Clear();
-            AscendingAortaPanel.Controls.Clear();
-            TransverseArchPanel.Controls.Clear();
-            DistalArchPanel.Controls.Clear();
-            AorticIsthmus3VVPanel.Controls.Clear();
-            AscendingAortaVelocityPanel.Controls.Clear();
-            AorticIsthmusSaggitalPanel.Controls.Clear();
-
-            RightAorticArch1Panel.Controls.Clear();
-            RightAorticArch2Panel.Controls.Clear();
-            NoCoarctationPanel.Controls.Clear();
-            CoarctationPanel.Controls.Clear();
-
-            CoarctationAortaPanel.Controls.Clear();
-            DescendingAortaPanel.Controls.Clear();
-            DescendindAortaGradPanel.Controls.Clear();
-
-            BranchPulmArteryPanel.Controls.Clear();
-
-            MainPulmArteryPanel.Controls.Clear();
-            MainPulmArteryVelPanel.Controls.Clear();
-            MainPulmArteryGradPanel.Controls.Clear();
-
-            RightPulmArteryPanel.Controls.Clear();
-            RightPulmArteryVelPanel.Controls.Clear();
-            RightPulmArteryGradPanel.Controls.Clear();
-
-            LeftPulmArteryPanel.Controls.Clear();
-            LeftPulmArteryVelPanel.Controls.Clear();
-            LeftPulmArteryGradPanel.Controls.Clear();
-
-            NoPatentDuctusArteriosusPanel.Controls.Clear();
-            DuctusArteriosus1Panel.Controls.Clear();
-            DuctusArteriosus2Panel.Controls.Clear();
-
-            DuctusArteriosus3VVPanel.Controls.Clear();
-            DuctusArteriosusVelPanel.Controls.Clear();
-            PDAGradientPanel.Controls.Clear();
-            DuctusArteriosusSaggitalPanel.Controls.Clear();
-
-            #endregion
-            // Pulmonary Veins
-            #region
-            PulmonaryVeinsPanel.Controls.Clear();
-
-            //PulmVeinSWavePanel.Controls.Clear();
-            //PulmVeinDWavePanel.Controls.Clear();
-            //PulmVeinAWavePanel.Controls.Clear();
-            //PulmVeinWaveDurationPanel.Controls.Clear();
-
-            #endregion
-            // Coronary Arteries
-            #region
-            CoronaryArteryPanel.Controls.Clear();
-
-            LeftMainCoronaryPanel.Controls.Clear();
-            AnteriorCoronaryPanel.Controls.Clear();
-            RightCoronaryPanel.Controls.Clear();
-            LeftCircumflexPanel.Controls.Clear();
-
-            #endregion
-            // Other	
-            #region
-            NoPerciardialEffusionPanel.Controls.Clear();
-            PerciardialEffusionPanel.Controls.Clear();
-
-            #endregion
-            // Conclusion	
-            #region
-            ConclusionPanel.Controls.Clear();
-            #endregion
-
-        }
-        */private void MainForm_Load(object sender, EventArgs e) {
+        private void MainForm_Load(object sender, EventArgs e) {
 
         }
 
@@ -499,7 +223,7 @@ namespace Fetal_Reporting_Windows_App {
             if (reportForm == null) {
                 reportForm = new ReportForm(report);
                 reportForm.FormClosed += (x, y) => { this.reportForm = null; };
-                reportForm.Show(this);
+                reportForm.ShowDialog(this);
             }
             else {
                 reportForm.Activate();

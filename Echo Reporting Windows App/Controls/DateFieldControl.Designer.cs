@@ -40,19 +40,21 @@
             // 
             this.ResultValueTextBox.Location = new System.Drawing.Point(7, 19);
             this.ResultValueTextBox.Name = "ResultValueTextBox";
+            this.ResultValueTextBox.ReadOnly = true;
             this.ResultValueTextBox.Size = new System.Drawing.Size(96, 20);
             this.ResultValueTextBox.TabIndex = 3;
-            this.ResultValueTextBox.TextChanged += new System.EventHandler(this.ResultValueTextBox_TextChanged);
+            this.ResultValueTextBox.Click += new System.EventHandler(this.ResultValueTextBox_Click);
             // 
-            // StringFieldControl
+            // DateFieldControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.ResultValueTextBox);
             this.Controls.Add(this.ResultTitleLabel);
-            this.Name = "StringFieldControl";
+            this.Name = "DateFieldControl";
             this.Size = new System.Drawing.Size(254, 54);
+            this.Load += new System.EventHandler(this.DateFieldControl_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

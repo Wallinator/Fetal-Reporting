@@ -82,6 +82,9 @@
             this.OutflowTractsPanel = new System.Windows.Forms.Panel();
             this.VentriculoarterialPanel = new System.Windows.Forms.Panel();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.RVLengthPanel = new System.Windows.Forms.Panel();
+            this.RVEDDPanel = new System.Windows.Forms.Panel();
+            this.RVWallPanel = new System.Windows.Forms.Panel();
             this.CardioCircumferencePanel = new System.Windows.Forms.Panel();
             this.SeptalWallPanel = new System.Windows.Forms.Panel();
             this.LVLengthPanel = new System.Windows.Forms.Panel();
@@ -146,9 +149,6 @@
             this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SitusPanel = new System.Windows.Forms.Panel();
-            this.RVWallPanel = new System.Windows.Forms.Panel();
-            this.RVEDDPanel = new System.Windows.Forms.Panel();
-            this.RVLengthPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -420,17 +420,17 @@
             this.DuctusArteriosus3VVPanel.Size = new System.Drawing.Size(254, 59);
             this.DuctusArteriosus3VVPanel.TabIndex = 33;
             // 
-            // PatentDuctusArteriosus2Panel
+            // DuctusArteriosus2Panel
             // 
             this.DuctusArteriosus2Panel.Location = new System.Drawing.Point(118, 245);
-            this.DuctusArteriosus2Panel.Name = "PatentDuctusArteriosus2Panel";
+            this.DuctusArteriosus2Panel.Name = "DuctusArteriosus2Panel";
             this.DuctusArteriosus2Panel.Size = new System.Drawing.Size(443, 26);
             this.DuctusArteriosus2Panel.TabIndex = 35;
             // 
-            // PatentDuctusArteriosus1Panel
+            // DuctusArteriosus1Panel
             // 
             this.DuctusArteriosus1Panel.Location = new System.Drawing.Point(23, 245);
-            this.DuctusArteriosus1Panel.Name = "PatentDuctusArteriosus1Panel";
+            this.DuctusArteriosus1Panel.Name = "DuctusArteriosus1Panel";
             this.DuctusArteriosus1Panel.Size = new System.Drawing.Size(95, 26);
             this.DuctusArteriosus1Panel.TabIndex = 36;
             // 
@@ -701,6 +701,30 @@
             this.groupBox7.TabIndex = 24;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Ventricles";
+            // 
+            // RVLengthPanel
+            // 
+            this.RVLengthPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RVLengthPanel.Location = new System.Drawing.Point(542, 447);
+            this.RVLengthPanel.Name = "RVLengthPanel";
+            this.RVLengthPanel.Size = new System.Drawing.Size(254, 59);
+            this.RVLengthPanel.TabIndex = 48;
+            // 
+            // RVEDDPanel
+            // 
+            this.RVEDDPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RVEDDPanel.Location = new System.Drawing.Point(282, 447);
+            this.RVEDDPanel.Name = "RVEDDPanel";
+            this.RVEDDPanel.Size = new System.Drawing.Size(254, 59);
+            this.RVEDDPanel.TabIndex = 47;
+            // 
+            // RVWallPanel
+            // 
+            this.RVWallPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.RVWallPanel.Location = new System.Drawing.Point(22, 447);
+            this.RVWallPanel.Name = "RVWallPanel";
+            this.RVWallPanel.Size = new System.Drawing.Size(254, 59);
+            this.RVWallPanel.TabIndex = 26;
             // 
             // CardioCircumferencePanel
             // 
@@ -1223,30 +1247,6 @@
             this.SitusPanel.Name = "SitusPanel";
             this.SitusPanel.Size = new System.Drawing.Size(533, 26);
             this.SitusPanel.TabIndex = 3;
-            // 
-            // RVWallPanel
-            // 
-            this.RVWallPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RVWallPanel.Location = new System.Drawing.Point(22, 447);
-            this.RVWallPanel.Name = "RVWallPanel";
-            this.RVWallPanel.Size = new System.Drawing.Size(254, 59);
-            this.RVWallPanel.TabIndex = 26;
-            // 
-            // RVEDDPanel
-            // 
-            this.RVEDDPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RVEDDPanel.Location = new System.Drawing.Point(282, 447);
-            this.RVEDDPanel.Name = "RVEDDPanel";
-            this.RVEDDPanel.Size = new System.Drawing.Size(254, 59);
-            this.RVEDDPanel.TabIndex = 47;
-            // 
-            // RVLengthPanel
-            // 
-            this.RVLengthPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RVLengthPanel.Location = new System.Drawing.Point(542, 447);
-            this.RVLengthPanel.Name = "RVLengthPanel";
-            this.RVLengthPanel.Size = new System.Drawing.Size(254, 59);
-            this.RVLengthPanel.TabIndex = 48;
             // 
             // MainForm
             // 

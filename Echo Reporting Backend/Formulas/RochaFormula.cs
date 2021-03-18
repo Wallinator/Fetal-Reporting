@@ -26,6 +26,7 @@ namespace FetalReporting.Formulas {
                 return constants.Anomalies[bracket];
             }
         }
+        public override bool HasFLGASwitch() => false;
         public override double GetZScore(double measurement) {
 
             return (measurement - (constants.Multiplier * constants.Pd.GestationalAge.Value + constants.Intercept))/constants.Divisor;

@@ -22,7 +22,8 @@ namespace FetalReporting.Data {
 
 
         public void UpdateGestationalAgeResult() {
-            GestationalAge.Value = (280 - (EstimatedDueDate.Value - StudyDate.Value).Days)/7;
+            GestationalAge.Value = (280 - (EstimatedDueDate.Value - StudyDate.Value).Days)/7.0;
+            GestationalAge.Empty = false;
         }
         public PatientData() {
 
