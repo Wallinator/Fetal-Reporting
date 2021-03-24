@@ -149,6 +149,11 @@
             this.SystemicVeinsPanel = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.SitusPanel = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -162,6 +167,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -336,6 +342,7 @@
             // panel3
             // 
             this.panel3.AutoScroll = true;
+            this.panel3.Controls.Add(this.groupBox2);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.groupBox9);
             this.panel3.Controls.Add(this.groupBox8);
@@ -356,9 +363,9 @@
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(27, 3343);
+            this.panel4.Location = new System.Drawing.Point(27, 3568);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1079, 368);
+            this.panel4.Size = new System.Drawing.Size(1079, 143);
             this.panel4.TabIndex = 65;
             // 
             // groupBox9
@@ -382,7 +389,7 @@
             this.groupBox9.Controls.Add(this.LeftAorticArch1Panel);
             this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(27, 2632);
+            this.groupBox9.Location = new System.Drawing.Point(27, 2857);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(1058, 417);
             this.groupBox9.TabIndex = 60;
@@ -538,7 +545,7 @@
             this.groupBox8.Controls.Add(this.VentriculoarterialPanel);
             this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(27, 2196);
+            this.groupBox8.Location = new System.Drawing.Point(27, 2421);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(1058, 429);
             this.groupBox8.TabIndex = 47;
@@ -695,7 +702,7 @@
             this.groupBox7.Controls.Add(this.VentricleSizeFunctionPanel);
             this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.Location = new System.Drawing.Point(27, 1323);
+            this.groupBox7.Location = new System.Drawing.Point(27, 1548);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(1058, 841);
             this.groupBox7.TabIndex = 24;
@@ -917,7 +924,7 @@
             this.groupBox13.Controls.Add(this.ConclusionPanel);
             this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox13.Location = new System.Drawing.Point(27, 352);
+            this.groupBox13.Location = new System.Drawing.Point(27, 577);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(1058, 99);
             this.groupBox13.TabIndex = 64;
@@ -940,7 +947,7 @@
             this.groupBox12.Controls.Add(this.NoPerciardialEffusionPanel);
             this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox12.Location = new System.Drawing.Point(27, 3155);
+            this.groupBox12.Location = new System.Drawing.Point(27, 3380);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(1058, 182);
             this.groupBox12.TabIndex = 63;
@@ -987,7 +994,7 @@
             this.groupBox10.Controls.Add(this.PulmonaryVeinsPanel);
             this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(27, 3055);
+            this.groupBox10.Location = new System.Drawing.Point(27, 3280);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(1058, 94);
             this.groupBox10.TabIndex = 61;
@@ -1023,7 +1030,7 @@
             this.groupBox6.Controls.Add(this.AVConnectionPanel);
             this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(27, 736);
+            this.groupBox6.Location = new System.Drawing.Point(27, 961);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(1058, 581);
             this.groupBox6.TabIndex = 17;
@@ -1168,7 +1175,7 @@
             this.groupBox5.Controls.Add(this.NormalAtriaPanel);
             this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(27, 582);
+            this.groupBox5.Location = new System.Drawing.Point(27, 807);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(1058, 148);
             this.groupBox5.TabIndex = 16;
@@ -1215,7 +1222,7 @@
             this.groupBox4.Controls.Add(this.SystemicVeinsPanel);
             this.groupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(27, 518);
+            this.groupBox4.Location = new System.Drawing.Point(27, 743);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(1058, 58);
             this.groupBox4.TabIndex = 15;
@@ -1234,7 +1241,7 @@
             this.groupBox3.Controls.Add(this.SitusPanel);
             this.groupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(27, 454);
+            this.groupBox3.Location = new System.Drawing.Point(27, 679);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1058, 58);
             this.groupBox3.TabIndex = 14;
@@ -1248,6 +1255,53 @@
             this.SitusPanel.Size = new System.Drawing.Size(533, 26);
             this.SitusPanel.TabIndex = 3;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel14);
+            this.groupBox2.Controls.Add(this.panel13);
+            this.groupBox2.Controls.Add(this.panel11);
+            this.groupBox2.Controls.Add(this.panel12);
+            this.groupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(27, 286);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1058, 242);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Patient Data";
+            // 
+            // panel14
+            // 
+            this.panel14.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel14.Location = new System.Drawing.Point(795, 37);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(254, 59);
+            this.panel14.TabIndex = 5;
+            // 
+            // panel13
+            // 
+            this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel13.Location = new System.Drawing.Point(535, 37);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(254, 59);
+            this.panel13.TabIndex = 4;
+            // 
+            // panel11
+            // 
+            this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel11.Location = new System.Drawing.Point(12, 37);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(254, 59);
+            this.panel11.TabIndex = 2;
+            // 
+            // panel12
+            // 
+            this.panel12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel12.Location = new System.Drawing.Point(275, 37);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(254, 59);
+            this.panel12.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1259,7 +1313,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Echo Report Generator";
+            this.Text = "Fetal Report Generator";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1275,6 +1329,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1407,6 +1462,11 @@
         private System.Windows.Forms.Panel RVLengthPanel;
         private System.Windows.Forms.Panel RVEDDPanel;
         private System.Windows.Forms.Panel RVWallPanel;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
     }
 }
 

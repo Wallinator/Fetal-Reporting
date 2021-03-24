@@ -9,6 +9,7 @@ namespace Fetal_Reporting_Windows_App {
         public delegate void Updated();
         public event Updated OnUpdate;
         private readonly Result Result = new Result("", "");
+        private readonly MainForm Form;
 
         //public ResultControl(string name, string unitShortHand, double value = 0, bool showNotFoundError = true, Action OnUpdate = null) : this(new Result(name, unitShortHand, value: value), showNotFoundError, OnUpdate) {
         //}
@@ -27,6 +28,7 @@ namespace Fetal_Reporting_Windows_App {
                 hook.OnUpdate += UpdateValue;
             }
             this.Result = result;
+            this.Form = form;
             if (result.AltName.Length != 0) {
                 ResultTitleLabel.Text = result.AltName;
             }
@@ -36,13 +38,14 @@ namespace Fetal_Reporting_Windows_App {
             ResultUnitLabel.Text = result.UnitShorthand;
             ZScoreLabel.Text = "";
             Anomaly.Text = "";
-            if (showNotFoundError && result.Empty) {
-                errorProvider1.SetError(ResultUnitLabel, result.Name + " value not found in file.");
+
+            if(Form.ResultControls.TryGetValue(Result.Name, out var x)) {
+                x.Add(this);
             }
             else {
-                ResultValueTextBox.Text = result.Value.ToString();
-                UpdateValue(result.Value);
+                Form.ResultControls.Add(Result.Name, new List<ResultControl>() { this });
             }
+            UpdateValue(result.Value);
         }
 
         private void ValidateValue(object sender, EventArgs e) {
@@ -60,10 +63,19 @@ namespace Fetal_Reporting_Windows_App {
             }
         }
         public void UpdateValue() {
-            UpdateValue(Result.Value);
+            UpdateValue(Result.Value, true);
         }
-        private void UpdateValue(double value) {
+        public void UpdateValue(bool updateClones) {
+            UpdateValue(Result.Value, updateClones);
+        }
+        private void UpdateValue(double value, bool updateClones = true) {
             Result.Value = value;
+            if(updateClones) {
+                foreach(var r in Form.ResultControls[Result.Name]) {
+                    r.UpdateValue(false);
+                }
+                return;
+            }
             Anomaly.Text = Result.AnomalyText;
             if (Result.Empty) {
                 ResultValueTextBox.Text = "";

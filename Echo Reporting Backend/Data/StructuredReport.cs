@@ -35,6 +35,7 @@ namespace FetalReporting.Data {
         public StructuredReport(PatientData patientData) : this(patientData, new ReportingOptions()) {
         }
         public void GenerateSections() {
+            AddCalculatedValues();
             Sections = new ReportSections(this);
         }
 
@@ -45,7 +46,7 @@ namespace FetalReporting.Data {
 
 
             y = Results["Tricuspid valve regurgitation peak gradient"];
-            if(Results.TryGetValue("Tricuspid valve regurgitation peak velocity", out x)) {
+            if(Results.TryGetValue("Tricuspid valve regurgitation peak velocity", out x) && !x.Empty) {
                 y.Value = 4 * x.Value * x.Value;
                 y.Empty = false;
             }
@@ -55,7 +56,7 @@ namespace FetalReporting.Data {
             }
 
             y = Results["Pulmonary valve peak gradient"];
-            if(Results.TryGetValue("Pulmonary valve peak velocity", out x)) {
+            if(Results.TryGetValue("Pulmonary valve peak velocity", out x) && !x.Empty) {
                 y.Value = 4 * x.Value * x.Value;
                 y.Empty = false;
             }
@@ -65,7 +66,7 @@ namespace FetalReporting.Data {
             }
 
             y = Results["Aortic valve peak gradient"];
-            if(Results.TryGetValue("Aortic valve peak velocity", out x)) {
+            if(Results.TryGetValue("Aortic valve peak velocity", out x) && !x.Empty) {
                 y.Value = 4 * x.Value * x.Value;
                 y.Empty = false;
             }

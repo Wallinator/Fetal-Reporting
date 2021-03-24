@@ -5,7 +5,7 @@ namespace FetalReporting.Data {
     public static class ReportGenerator {
         public static string GenerateHTML(StructuredReport report, int fontSize) {
 
-            List<string> l1, l2, l3;
+            List<string> l1, l2;
             var html = @"<html>
 				<head>
 				<link rel=""stylesheet"" href=""https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"" integrity=""sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"" crossorigin=""anonymous"">
@@ -29,12 +29,8 @@ namespace FetalReporting.Data {
             if (pd.PatientAge.Value < 1) {
                 age = Math.Floor(pd.PatientAge.Value * 12).ToString() + " mo";
             }
-            string bp = "";
-            /*if (!pd.SystolicBloodPressure.Empty && !pd.DiastolicBloodPressure.Empty) {
-                bp = pd.SystolicBloodPressure.Value.ToString("N0") + "/" + pd.DiastolicBloodPressure.Value.ToString("N0") + " mmHg";
-            }
 
-            l1 = pd.PatientID.TableString();
+            /*l1 = pd.PatientID.TableString();
             l2 = pd.StudyDate.TableString();
             html += AddPatientDataRow(l1, l2);
             l1 = pd.PatientName.TableString();
@@ -45,10 +41,11 @@ namespace FetalReporting.Data {
             html += AddPatientDataRow(l1, l2);
             l1 = pd.PatientDOB.TableString();
             l2 = pd.BSA.TableString();
-            html += AddPatientDataRow(l1, l2);*/
+            html += AddPatientDataRow(l1, l2);
+
             l1 = new List<string>() { pd.PatientAge.Name, age };
             l2 = new List<string>() { "Blood Pressure", bp };
-            html += AddPatientDataRow(l1, l2);
+            html += AddPatientDataRow(l1, l2);*/
             l1 = pd.ReasonForStudy.TableString();
             l2 = pd.EchoType.TableString();
             html += AddPatientDataRow(l1, l2);
@@ -62,61 +59,6 @@ namespace FetalReporting.Data {
 			</table><br/>
 			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Findings</span><br />
 			</p>";
-            html += string.Format("<table style = \"border-collapse: collapse; font-size: {0}px;\" class=\"table table-bordered table-sm\">", fontSize);
-            html += @"
-				<thead class=""thead-light"">
-					  <tr>
-						<th style = ""text-align: left;""> Measure </th>
-						<th style=""text-align: left;"">(cm)<span style = ""white-space:pre""></span></th>
-						<th style=""text-align: left;"">Z Score</th>
-						<th style = ""text-align: left;""> Measure </th>
-						<th style= ""text-align: left;""></th>
-						<th style= ""text-align: left;""> Calculation </th>
-						<th style= ""text-align: left;""></th>
-					</tr>
-				</thead>
-				<tbody>";
-            l1 = report.Results["IVSd"].AsString();
-            l2 = report.Results["Mitral valve E wave"].AsString();
-            l3 = report.Results["Fractional Shortening"].AsString();
-            l2[0] = "MV Peak E";
-            l3[0] = "FS%";
-            html += AddTableRow(l1, l2, l3);
-
-            l1 = report.Results["LVIDd"].AsString();
-            l2 = report.Results["Mitral valve A wave"].AsString();
-            l3 = report.Results["Left Ventricular Teichholz EF"].AsString();
-            l2[0] = "MV Peak A";
-            l3[0] = "EF (Teich)";
-            html += AddTableRow(l1, l2, l3);
-
-            l1 = report.Results["LVPWd"].AsString();
-            l2 = report.Results["MV decel time"].AsString();
-            l3 = report.Results["LV mass index"].AsString();
-            l2[0] = "MV decel time";
-            l3[0] = "LV Mass Index (Cubed)";
-            html += AddTableRow(l1, l2, l3);
-
-            l1 = report.Results["IVSs"].AsString();
-            l2 = report.Results["Mitral annulus E'"].AsString();
-            l3 = report.Results["Heart Rate"].AsString();
-            l2[0] = "LV E'";
-            l3[0] = "HR";
-            html += AddTableRow(l1, l2, l3);
-
-            l1 = report.Results["LVIDs"].AsString();
-            l2 = report.Results["Septal annulus E'"].AsString();
-            l3 = report.Results["MVCFc"].AsString();
-            l2[0] = "Septal E'";
-            l3[0] = "MVCFc";
-            html += AddTableRow(l1, l2, l3);
-
-            l1 = report.Results["LVPWs"].AsString();
-            l2 = report.Results["Tricuspid annulus E'"].AsString();
-            l3 = report.Results["Left ventricular cardiac output"].AsString();
-            l2[0] = "RV E'";
-            l3[0] = "LV output";
-            html += AddTableRow(l1, l2, l3);
 
 
             html += @"
@@ -132,7 +74,6 @@ namespace FetalReporting.Data {
             html += string.Format(@"<div><span style = ""font-weight: bold;""> Outlets - </span>{0}</div> ", report.Sections.Outlets);
             html += string.Format(@"<div><span style = ""font-weight: bold;""> Great Arteries - </span>{0}</div> ", report.Sections.GreatArteries);
             html += string.Format(@"<div><span style = ""font-weight: bold;""> Pulmonary Veins - </span>{0}</div> ", report.Sections.PulmonaryVeins);
-            html += string.Format(@"<div><span style = ""font-weight: bold;""> Coronary Arteries - </span>{0}</div> ", report.Sections.CoronaryArteries);
             html += string.Format(@"<div><span style = ""font-weight: bold;""> Other - </span>{0}</div> ", report.Sections.Other);
 
             html += @"<div></div><br/><div><span style = ""font-weight: bold; text-decoration-line: underline;""> Conclusion </span></div>";

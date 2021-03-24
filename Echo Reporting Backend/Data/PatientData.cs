@@ -9,7 +9,7 @@ namespace FetalReporting.Data {
     public class PatientData {
         public StringResult PatientID;
         public StringResult PatientName;
-        public StringResult PatientDOB;
+        public DateResult PatientDOB;
         public DateResult StudyDate;
         public DateResult EstimatedDueDate;
         public StringResult ReasonForStudy;
@@ -22,8 +22,12 @@ namespace FetalReporting.Data {
 
 
         public void UpdateGestationalAgeResult() {
-            GestationalAge.Value = (280 - (EstimatedDueDate.Value - StudyDate.Value).Days)/7.0;
+            GestationalAge.Value = (280 - (EstimatedDueDate.Value - StudyDate.Value).TotalDays) / 7.0;
             GestationalAge.Empty = false;
+        }
+        public void UpdateAgeResult() {
+            PatientAge.Value = (DateTime.Now - PatientDOB.Value).TotalDays / 365.0;
+            PatientAge.Empty = false;
         }
         public PatientData() {
 
@@ -37,7 +41,7 @@ namespace FetalReporting.Data {
 
             PatientID = new StringResult("Patient ID");
 
-            PatientDOB = new StringResult("DOB");
+            PatientDOB = new DateResult("DOB");
 
             StudyDate = new DateResult("Study Date");
 
