@@ -30,27 +30,24 @@ namespace FetalReporting.Data {
                 age = Math.Floor(pd.PatientAge.Value * 12).ToString() + " mo";
             }
 
-            /*l1 = pd.PatientID.TableString();
+            l1 = pd.PatientID.TableString();
             l2 = pd.StudyDate.TableString();
             html += AddPatientDataRow(l1, l2);
             l1 = pd.PatientName.TableString();
-            l2 = pd.PatientHeight.TableString();
-            html += AddPatientDataRow(l1, l2);
-            l1 = pd.PatientSex.TableString();
-            l2 = pd.PatientWeight.TableString();
+            l2 = pd.EstimatedDueDate.TableString();
             html += AddPatientDataRow(l1, l2);
             l1 = pd.PatientDOB.TableString();
-            l2 = pd.BSA.TableString();
+            l2 = pd.GestationalAge.TableString();
+            html += AddPatientDataRow(l1, l2);
+            l1 = new List<string>() { pd.PatientAge.Name, age };
+            l2 = pd.FemurLength.TableString();
             html += AddPatientDataRow(l1, l2);
 
-            l1 = new List<string>() { pd.PatientAge.Name, age };
-            l2 = new List<string>() { "Blood Pressure", bp };
-            html += AddPatientDataRow(l1, l2);*/
-            l1 = pd.ReasonForStudy.TableString();
-            l2 = pd.EchoType.TableString();
+            l1 = pd.EchoType.TableString();
+            l2 = pd.ReasonForStudy.TableString();
             html += AddPatientDataRow(l1, l2);
-            l1 = pd.ReferringPhysician.TableString();
-            l2 = new List<string>() { "", "" };
+            l1 = new List<string>() { "", "" };
+            l2 = pd.ReferringPhysician.TableString();
             html += AddPatientDataRow(l1, l2);
 
 

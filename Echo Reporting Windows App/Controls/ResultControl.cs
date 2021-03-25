@@ -48,7 +48,7 @@ namespace Fetal_Reporting_Windows_App {
             UpdateValue(result.Value);
         }
 
-        private void ValidateValue(object sender, EventArgs e) {
+        public void ValidateValue(object sender, EventArgs e) {
             try {
                 double value = double.Parse(ResultValueTextBox.Text.Trim());
                 errorProvider1.Clear();
@@ -81,10 +81,13 @@ namespace Fetal_Reporting_Windows_App {
                 ResultValueTextBox.Text = "";
             }
             else {
-                if (Result.UnitShorthand.Equals("mmHg") ||
+                if(Result.UnitShorthand.Equals("mmHg") ||
                     Result.UnitShorthand.Equals("cm/s") ||
                     Result.UnitShorthand.Equals("m/s")) {
                     ResultValueTextBox.Text = Math.Round(value, 1).ToString();
+                }
+                else if (Result.UnitShorthand.Equals("years")) {
+                    ResultValueTextBox.Text = Math.Floor(value).ToString();
                 }
                 else {
                     ResultValueTextBox.Text = Math.Round(value, 3).ToString();
@@ -118,7 +121,6 @@ namespace Fetal_Reporting_Windows_App {
         }
 
         private void FLorGABox_SelectedIndexChanged(object sender, EventArgs e) {
-            Debug.WriteLine("beepbe bpep");
             if(Result.Formula != null) {
                 Result.Formula.UseFL = FLorGABox.SelectedIndex != 0;
                 UpdateValue();

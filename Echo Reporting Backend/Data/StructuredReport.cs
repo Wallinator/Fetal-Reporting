@@ -47,7 +47,7 @@ namespace FetalReporting.Data {
 
             y = Results["Tricuspid valve regurgitation peak gradient"];
             if(Results.TryGetValue("Tricuspid valve regurgitation peak velocity", out x) && !x.Empty) {
-                y.Value = 4 * x.Value * x.Value;
+                y.Value = 4 * (x.Value * x.Value)/10000;
                 y.Empty = false;
             }
             else {
@@ -57,7 +57,7 @@ namespace FetalReporting.Data {
 
             y = Results["Pulmonary valve peak gradient"];
             if(Results.TryGetValue("Pulmonary valve peak velocity", out x) && !x.Empty) {
-                y.Value = 4 * x.Value * x.Value;
+                y.Value = 4 * (x.Value * x.Value)/10000;
                 y.Empty = false;
             }
             else {
@@ -67,7 +67,7 @@ namespace FetalReporting.Data {
 
             y = Results["Aortic valve peak gradient"];
             if(Results.TryGetValue("Aortic valve peak velocity", out x) && !x.Empty) {
-                y.Value = 4 * x.Value * x.Value;
+                y.Value = 4 * (x.Value * x.Value)/10000;
                 y.Empty = false;
             }
             else {

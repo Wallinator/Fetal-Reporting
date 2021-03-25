@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FetalReporting.Data.Results {
     public class DateResult {
@@ -16,6 +17,9 @@ namespace FetalReporting.Data.Results {
         }
         public string AsString() {
             return Value.Date.ToShortDateString();
+        }
+        public List<string> TableString() {
+            return new List<string>() { Name, AsString() + "" + "" };
         }
     }
 }
