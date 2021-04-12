@@ -27,7 +27,7 @@ namespace Fetal_Reporting_Windows_App {
         private void button1_Click(object sender, EventArgs e) {
             date = monthCalendar1.SelectionStart;
             DateField.Result.Value = date;
-            DateField.UpdateText();
+            //DateField.UpdateText();
             this.Hide();
         }
     }

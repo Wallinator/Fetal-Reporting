@@ -5,27 +5,25 @@ using System.Windows.Forms;
 namespace Fetal_Reporting_Windows_App {
     public partial class DateFieldControl : UserControl {
         public  DateResult Result;
-        private DatePickerPopupForm d;
+        //private DatePickerPopupForm d;
         private Action OnUpdate;
         public DateFieldControl(DateResult result, Action onUpdate = null) {
             InitializeComponent();
             OnUpdate = onUpdate;
-            d = new DatePickerPopupForm(this);
-            d.TopMost = true;
+            //d = new DatePickerPopupForm(this);
+            //d.TopMost = true;
             Result = result;
             ResultTitleLabel.Text = result.Name;
-            UpdateText();
+            ValidateValue(null, null);
         }
-        private void ResultValueTextBox_Click(object sender, EventArgs e) {
-            d.ShowDialog();
-        }
-
-        private void DateFieldControl_Load(object sender, EventArgs e) {
-
-        }
-        public void UpdateText() {
-            OnUpdate?.Invoke();
+        public void ValidateValue(object sender, EventArgs e) {
+            DateTime dt;
+            var valid = DateTime.TryParse(ResultValueTextBox.Text.Trim(), out dt);
+            if (valid) {
+                Result.Value = dt;
+            }
             ResultValueTextBox.Text = Result.Value.ToShortDateString();
+            OnUpdate?.Invoke();
         }
     }
 }

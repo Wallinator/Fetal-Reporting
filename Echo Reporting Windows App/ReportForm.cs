@@ -75,8 +75,8 @@ namespace Fetal_Reporting_Windows_App {
         private void GenerateReport(bool asPDF) {
             var name = _report.PatientData.PatientID.Value;
             // ch
-            var date = "";//_report.PatientData.StudyDate.Value.Replace("/", "-");
-            saveFileDialog1.FileName = name + " Echo " + date;
+            var date = _report.PatientData.StudyDate.Value.ToShortDateString().Replace("/", "-");
+            saveFileDialog1.FileName = name + " Fetal Echo " + date;
             if (asPDF) {
                 saveFileDialog1.DefaultExt = "pdf";
                 saveFileDialog1.Filter = "Pdf Files(*.pdf)| *.pdf | All files | *.*";

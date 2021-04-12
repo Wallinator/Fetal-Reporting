@@ -13,6 +13,9 @@ namespace FetalReporting.Data.Results {
         }
         public DateResult(string name, DateTime value = new DateTime()) {
             Name = name;
+            if(value.Equals(new DateTime())) {
+                value = DateTime.Now;
+            }
             Value = value;
         }
         public string AsString() {

@@ -14,7 +14,7 @@ namespace FetalReporting.Data {
 
             html += string.Format("<body style = \"font-size: {0}px;\">", fontSize);
             html += @"<p></p><img src=""https://i.ibb.co/k5KJw8p/letterheadplain2.jpg"" width=""100%"">
-			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Echocardiogram Report</span><br />";
+			<p><span style = ""font-size: 24px; font-weight: 700; text-decoration-line: underline;"">Fetal Echocardiogram Report</span><br />";
             /*html += @"<p></p>
 			<br/>
 			<br/>
@@ -41,6 +41,7 @@ namespace FetalReporting.Data {
             html += AddPatientDataRow(l1, l2);
             l1 = new List<string>() { pd.PatientAge.Name, age };
             l2 = pd.FemurLength.TableString();
+            l2[1] = pd.FemurLength.Empty ?  "" : l2[1];
             html += AddPatientDataRow(l1, l2);
 
             l1 = pd.EchoType.TableString();

@@ -51,7 +51,7 @@ namespace FetalReporting.Data {
 
             ReferringPhysician = new StringResult("Referring Physician");
 
-            EchoType = new MultipleChoiceResult("Echo Type", new List<string>() { "Transthoracic echo" });
+            EchoType = new MultipleChoiceResult("Echo Type", new List<string>() { "Fetal Echo" });
 
             ReportingDoctor = new MultipleChoiceResult("Reporting Doctor", new List<string>() { "Dr Paul Brooks" });
 
